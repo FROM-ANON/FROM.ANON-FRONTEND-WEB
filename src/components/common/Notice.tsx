@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "./common/Div";
+import { Row } from "./Div";
 import Typo from "styles/Typo";
 import noticeLogo from "assets/icons/notice-logo.svg";
 import { Palette } from "styles/Palette";
