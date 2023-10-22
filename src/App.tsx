@@ -1,13 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import { Main } from "pages/Main";
+import { Inbox } from "pages/Inbox";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Main />} />
-            </Routes>
-        </BrowserRouter>
+        <RecoilRoot>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/inbox" element={<Inbox />} />
+                </Routes>
+            </BrowserRouter>
+        </RecoilRoot>
     );
 }
 
