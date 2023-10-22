@@ -5,7 +5,7 @@ import Typo from "styles/Typo";
 import { useState } from "react";
 
 export const ToggleMenu = () => {
-    const [menuClicked, setMenuClicked] = useState<boolean[]>([false, false]);
+    const [menuClicked, setMenuClicked] = useState<boolean[]>([true, false]);
 
     const handleClickMenu1 = () => {
         setMenuClicked([true, false]);
