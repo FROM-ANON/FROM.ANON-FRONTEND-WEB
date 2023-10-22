@@ -2,8 +2,15 @@ import Typo from "styles/Typo";
 import { Row } from "./Div";
 import styled from "styled-components";
 import leftArrow from "assets/icons/left-arrow.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Header = ({ type, text }: { type: string; text?: string }) => {
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1);
+    };
+
     return (
         <>
             {type === "main" ? (
@@ -13,7 +20,11 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
             ) : (
                 <Container justifyContent="flex-start" alignItems="center">
                     <Sub>
-                        <img src={leftArrow} alt="left arrow" />
+                        <img
+                            onClick={handleBack}
+                            src={leftArrow}
+                            alt="left arrow"
+                        />
                         <Typo.b4>{text}</Typo.b4>
                     </Sub>
                 </Container>
