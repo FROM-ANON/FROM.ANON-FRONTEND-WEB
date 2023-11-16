@@ -1,35 +1,50 @@
-import { Row } from "components/common/Div";
+import { Column, Row } from "components/common/Div";
 import styled from "styled-components";
 import rightArrow from "assets/icons/right-arrow.svg";
 import { Palette } from "styles/Palette";
 import { StyledLink } from "components/common/Link";
+import { Img } from "components/common/Img";
+import Typo from "styles/Typo";
+import { Link } from "./Link";
 
 export const Menu = ({
     children,
     to,
+    underComponent,
 }: {
-    children: React.ReactNode;
+    children: string;
     to: string;
+    underComponent?: boolean;
 }) => {
     return (
         <StyledLink to={to}>
-            <Container>
-                {children}
-                <Img src={rightArrow} alt="right arrow" />
+            <Container underComponent={underComponent}>
+                <Row justifyContent="space-between" alignItems="center">
+                    <Typo.h3>{children}</Typo.h3>
+                    <Img
+                        src={rightArrow}
+                        width={11}
+                        height={19}
+                        alt="right arrow"
+                    />
+                </Row>
+                {/* "편지함 링크 공유하기" 메뉴의 경우 Link component 추가 */}
+                {underComponent && <Link />}
             </Container>
         </StyledLink>
     );
 };
 
-const Container = styled(Row)`
-    height: 129px;
-    justify-content: space-between;
+const Container = styled(Column)<{ underComponent: boolean | undefined }>`
+    width: 100%;
+    height: ${(props) => (props.underComponent ? "120px" : "90px")};
+
+    justify-content: center;
     align-items: center;
 
-    background: ${Palette.Mandarin05};
-    padding: 0 34px;
-`;
-const Img = styled.img`
-    width: 10px;
-    height: 24px;
+    padding: 0 32px;
+    gap: 20px;
+
+    border-radius: 30px;
+    background: ${Palette.White};
 `;
