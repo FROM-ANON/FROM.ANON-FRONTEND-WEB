@@ -12,21 +12,21 @@ export const Toast = ({ text, show }: { text: string; show: boolean }) => {
 };
 
 const Container = styled(Row)<{ show: boolean }>`
-    width: calc(100% - 42px);
+    width: calc(100% - 46px);
     height: 41px;
     align-items: center;
     justify-content: flex-start;
 
-    margin: 0 22px;
-    padding: 0 10px;
+    margin: 0 23px;
+    padding: 0 16px;
 
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.45);
 
     position: fixed;
     bottom: 30px;
     left: 0px;
 
     opacity: ${(props) => (props.show ? 1 : 0)};
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
 `;
