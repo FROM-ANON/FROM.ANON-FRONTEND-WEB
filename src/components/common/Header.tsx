@@ -3,6 +3,7 @@ import { Row } from "./Div";
 import styled from "styled-components";
 import leftArrow from "assets/icons/left-arrow.svg";
 import { useNavigate } from "react-router-dom";
+import { Img } from "./Img";
 
 export const Header = ({ type, text }: { type: string; text?: string }) => {
     const navigate = useNavigate();
@@ -15,14 +16,21 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
         <>
             {type === "main" ? (
                 <Container justifyContent="center" alignItems="center">
-                    <img src="/logotext-small.svg" alt="Logo" />
+                    <Img
+                        src="/logotext.svg"
+                        width={102}
+                        height={23}
+                        alt="Logo"
+                    />
                 </Container>
             ) : (
                 <Container justifyContent="flex-start" alignItems="center">
                     <Sub>
-                        <img
+                        <Img
                             onClick={handleBack}
                             src={leftArrow}
+                            width={4}
+                            height={9.6}
                             alt="left arrow"
                         />
                         <Typo.b4>{text}</Typo.b4>
@@ -34,7 +42,7 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
 };
 
 const Container = styled(Row)`
-    height: 50px;
+    height: 70px;
 `;
 const Sub = styled(Row)`
     padding: 0 31px;
