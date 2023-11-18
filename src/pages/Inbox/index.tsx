@@ -1,29 +1,41 @@
 import { MailList } from "components/Inbox/MailList";
-import { Selected } from "components/Inbox/Selected";
-import { Column } from "components/common/Div";
+import { PageContainer } from "components/common/Div";
 import { Header } from "components/common/Header";
-import { Notice } from "components/common/Notice";
+import { Alert } from "components/common/modal/Alert";
+import { alertOpenState } from "recoil/atom";
 import { useRecoilState } from "recoil";
-import { clickedMailListState } from "recoil/atom";
+import { useEffect, useState } from "react";
+import { Toast } from "components/common/Toast";
+import { Confirm } from "components/common/modal/Confim";
 
 export const Inbox = () => {
-    const [mailState, setMailState] = useRecoilState(clickedMailListState);
-    const mail = mailState.mail;
+    const [alertState, setAlertState] = useRecoilState(alertOpenState);
+    const [toast, setToast] = useState<boolean>(false);
+    const [isConfirmedToDelete, setIsConfirmedToDelete] =
+        useState<boolean>(false);
+    useEffect(() => {
+        if (isConfirmedToDelete) {
+            setToast(true);
+            setTimeout(() => {
+                setToast(false);
+            }, 2000);
 
-    const countClickedMails = () => {
-        const clickedMails = mail.filter((mailItem) => mailItem.isClicked);
-        return clickedMails.length;
-    };
+            setIsConfirmedToDelete(false);
+        }
+    }, [isConfirmedToDelete]);
 
     return (
-        <Column>
+        <PageContainer>
             <Header type="sub" text="받은 편지함" />
-            {countClickedMails() ? (
-                <Selected />
-            ) : (
-                <Notice text="함께 감동을 나누고 사랑을 전달하세요." />
-            )}
             <MailList />
-        </Column>
+            {alertState.isOpen && (
+                <Confirm
+                    text="편지를 삭제하시겠습니까?"
+                    type="delete"
+                    setIsConfirmedToAction={setIsConfirmedToDelete}
+                ></Confirm>
+            )}
+            <Toast show={toast} text="삭제되었습니다." />
+        </PageContainer>
     );
 };

@@ -29,8 +29,8 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
                         <Img
                             onClick={handleBack}
                             src={leftArrow}
-                            width={4}
-                            height={9.6}
+                            width={7}
+                            height={12.6}
                             alt="left arrow"
                         />
                         <Typo.b4>{text}</Typo.b4>
@@ -47,4 +47,6 @@ const Container = styled(Row)`
 const Sub = styled(Row)`
     padding: 0 31px;
     gap: 15px;
+
+    align-items: center;
 `;

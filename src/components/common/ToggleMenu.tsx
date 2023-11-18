@@ -45,12 +45,11 @@ export const ToggleMenu = () => {
 };
 
 const Container = styled(Row)`
-    height: 48px;
     justify-content: flex-start;
     align-items: center;
 
     background: ${Palette.White};
-    padding: 0 42px;
+    padding: 11px 42px;
     gap: 15px;
 `;
 const TextRow = styled.div`
