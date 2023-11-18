@@ -7,7 +7,7 @@ import { Palette } from "styles/Palette";
 export const InboxMail = () => {
     return (
         <PageContainer backgroundColor={Palette.Mandarin20}>
-            <Header type="sub" />
+            <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
             <Column alignItems="center">
                 <Mail />
                 <Buttons />

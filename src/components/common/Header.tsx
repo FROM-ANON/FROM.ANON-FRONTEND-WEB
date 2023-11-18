@@ -5,7 +5,15 @@ import leftArrow from "assets/icons/left-arrow.svg";
 import { useNavigate } from "react-router-dom";
 import { Img } from "./Img";
 
-export const Header = ({ type, text }: { type: string; text?: string }) => {
+export const Header = ({
+    type,
+    text,
+    bgcolor,
+}: {
+    type: string;
+    text?: string;
+    bgcolor?: string;
+}) => {
     const navigate = useNavigate();
 
     const handleBack = () => {
@@ -15,7 +23,11 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
     return (
         <>
             {type === "main" ? (
-                <Container justifyContent="center" alignItems="center">
+                <Container
+                    justifyContent="center"
+                    alignItems="center"
+                    backgroundColor={bgcolor}
+                >
                     <Img
                         src="/logotext.svg"
                         width={102}
@@ -24,7 +36,11 @@ export const Header = ({ type, text }: { type: string; text?: string }) => {
                     />
                 </Container>
             ) : (
-                <Container justifyContent="flex-start" alignItems="center">
+                <Container
+                    justifyContent="flex-start"
+                    alignItems="center"
+                    backgroundColor={bgcolor}
+                >
                     <Sub>
                         <Img
                             onClick={handleBack}
