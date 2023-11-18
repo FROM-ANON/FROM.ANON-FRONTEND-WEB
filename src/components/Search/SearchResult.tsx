@@ -46,10 +46,12 @@ export const SearchResult = () => {
             </Column>
             <SendBtn
                 onClick={handleSendBtn}
-                color={isClicked ? Palette.Mandarin : Palette.Gray30}
+                color={isClicked ? Palette.Mandarin : Palette.Gray05}
                 isClicked={isClicked}
             >
-                <Typo.b3 color={Palette.White}>메세지 보내기</Typo.b3>
+                <Typo.b3 color={isClicked ? Palette.White : Palette.Gray50}>
+                    메세지 보내기
+                </Typo.b3>
             </SendBtn>
         </Column>
     );
@@ -58,5 +60,5 @@ export const SearchResult = () => {
 const SendBtn = styled(Button)<{ isClicked: boolean }>`
     position: absolute;
     bottom: 50px;
-    cursor: ${(props) => props.isClicked && `pointer`};
+    cursor: ${(props) => !props.isClicked && `default`};
 `;

@@ -22,7 +22,6 @@ export const InstaIdInfo = ({
 };
 
 const Container = styled(Row)<{ isClicked: boolean }>`
-    width: 300px;
     align-items: center;
     justify-content: center;
 
@@ -30,16 +29,16 @@ const Container = styled(Row)<{ isClicked: boolean }>`
     gap: 20px;
 
     background: ${(props) =>
-        props.isClicked ? Palette.Mandarin10 : Palette.White};
+        props.isClicked ? Palette.Mandarin20 : Palette.White};
 `;
 const ProfileImg = styled.img`
     width: 49px;
     height: 49px;
 
     border-radius: 50%;
-    background: ${Palette.Gray10};
+    background: ${Palette.Gray05};
 `;
 
 const Info = styled(Column)`
-    width: 200px;
+    width: 217px;
 `;
