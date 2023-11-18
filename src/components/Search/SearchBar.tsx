@@ -3,6 +3,7 @@ import styled from "styled-components";
 import search from "assets/icons/search.svg";
 import { Palette } from "styles/Palette";
 import deleteSearch from "assets/icons/delete-search.svg";
+import { Img } from "components/common/Img";
 
 interface searchBarProps {
     text: string;
@@ -38,7 +39,12 @@ export const SearchBar = ({
     return (
         <Container>
             <Row gap={14} alignItems="center" justifyContent="flex-start">
-                <Img src={search} alt="search icon" />
+                <Img
+                    src={search}
+                    width={16.43}
+                    height={16.43}
+                    alt="search icon"
+                />
                 <SearchInput
                     type="text"
                     value={text}
@@ -51,6 +57,8 @@ export const SearchBar = ({
                 <Img
                     src={deleteSearch}
                     onClick={handleDeleteText}
+                    width={20}
+                    height={20}
                     alt="deleted search text"
                 />
             )}
@@ -59,23 +67,22 @@ export const SearchBar = ({
 };
 
 const Container = styled(Row)`
-    width: 300px;
-    height: 32px;
+    width: 327px;
+    height: 37px;
 
     align-items: center;
     justify-content: space-between;
 
-    margin: 25px;
-    padding: 0 15px;
+    margin-top: 6px;
+    padding: 5px 15px;
 
-    border-radius: 10px;
-    background: ${Palette.Gray10};
+    border-radius: 12px;
+    background: ${Palette.Gray05};
 `;
-const Img = styled.img``;
 const SearchInput = styled.input`
     width: 85%;
     border: none;
-    background: ${Palette.Gray10};
+    background: transparent;
 
     font-family: PretendardMedium;
     font-size: 12px;

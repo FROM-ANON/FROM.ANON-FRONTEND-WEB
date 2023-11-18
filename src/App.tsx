@@ -12,7 +12,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/inbox" element={<Inbox />} />
-                    <Route path="/inbox/mail" element={<InboxMail />} />
+                    <Route path="/inbox/mail/:id" element={<InboxMail />} />
                     <Route path="/send" element={<Search />} />
                 </Routes>
             </BrowserRouter>
