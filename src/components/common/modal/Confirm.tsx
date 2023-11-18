@@ -1,21 +1,22 @@
-import { alertOpenState } from "recoil/atom";
-import { useSetRecoilState } from "recoil";
 import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 
 export const Confirm = ({
     text,
     type,
+    setIsModalOpenState,
     setIsConfirmedToAction,
 }: {
     text: string;
     type: string;
+    setIsModalOpenState: React.Dispatch<React.SetStateAction<any>>;
     setIsConfirmedToAction: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-    const setIsOpen = useSetRecoilState(alertOpenState);
-
     const nativate = useNavigate();
-    const handleClick = () => {
+    const handleLeftClick = () => {
+        setIsModalOpenState(false);
+    };
+    const handleRightClick = () => {
         switch (type) {
             case "delete":
                 handleDelete();
@@ -27,7 +28,7 @@ export const Confirm = ({
                 handleProUpgrade();
                 break;
         }
-        setIsOpen({ isOpen: false });
+        setIsModalOpenState(false);
     };
     const handleDelete = () => {
         // 편지 삭제
@@ -48,8 +49,8 @@ export const Confirm = ({
             <Modal.modalcontainer>
                 <Modal.message text={text} />
                 <Modal.confirmbutton
-                    onLeftClick={handleClick}
-                    onRightClick={handleClick}
+                    onLeftClick={handleLeftClick}
+                    onRightClick={handleRightClick}
                 />
             </Modal.modalcontainer>
         </Modal.backdrop>
