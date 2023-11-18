@@ -13,7 +13,9 @@ export const Button = styled(Row)<buttonProps>`
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
+    border-radius: 12px;
     border: ${(props) => `1px solid ${props.borderClr}`};
     background: ${({ color }) => color};
+
+    cursor: pointer;
 `;
