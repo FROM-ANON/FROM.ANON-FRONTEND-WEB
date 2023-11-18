@@ -26,6 +26,7 @@ const Container = styled(Row)<{ show: boolean }>`
     position: fixed;
     bottom: 30px;
     left: 0px;
+    z-index: 100000000;
 
     opacity: ${(props) => (props.show ? 1 : 0)};
     transition: opacity 0.8s ease-in-out;
