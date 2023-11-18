@@ -5,36 +5,61 @@ import Typo from "styles/Typo";
 import trashbin from "assets/icons/trashbin-colored.svg";
 import { useRecoilState } from "recoil";
 import { alertOpenState } from "recoil/atom";
-import { Alert } from "components/common/Alert";
+import { useEffect, useState } from "react";
+import { Toast } from "components/common/Toast";
+import { Confirm } from "components/common/modal/Confirm";
+import { Img } from "components/common/Img";
 
 export const Mail = () => {
-    const [alertState, setAlertState] = useRecoilState(alertOpenState);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const handleDelete = () => {
-        setAlertState({ ...alertState, isOpen: true });
+        setIsModalOpen(true);
     };
+    const [toast, setToast] = useState<boolean>(false);
+    const [isConfirmedToDelete, setIsConfirmedToDelete] =
+        useState<boolean>(false);
+    useEffect(() => {
+        if (isConfirmedToDelete) {
+            setToast(true);
+            setTimeout(() => {
+                setToast(false);
+            }, 2000);
 
+            setIsConfirmedToDelete(false);
+        }
+    }, [isConfirmedToDelete]);
     return (
         <Container>
-            <Typo.b4>
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 ...편지글 내용
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                편지글 내용
-            </Typo.b4>
+            <ContentText>
+                <u>
+                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
+                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
+                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
+                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 ...편지글
+                    내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글
+                    내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글
+                    내용 편지글 내용
+                </u>
+            </ContentText>
             <Row justifyContent="space-between" alignItems="center">
                 <Typo.s4 color={Palette.Mandarin}>23.10.30 1:00:21</Typo.s4>
                 <Img
                     src={trashbin}
                     onClick={handleDelete}
+                    width={14}
+                    height={13.96}
                     alt="delete button"
                 />
             </Row>
-            {alertState.isOpen && (
-                <Alert text="편지를 삭제하시겠습니까?" type="confirm"></Alert>
+            {isModalOpen && (
+                <Confirm
+                    text="편지를 삭제하시겠습니까?"
+                    type="delete"
+                    setIsModalOpenState={setIsModalOpen}
+                    setIsConfirmedToAction={setIsConfirmedToDelete}
+                ></Confirm>
             )}
+            <Toast show={toast} text="삭제되었습니다." />
         </Container>
     );
 };
@@ -46,15 +71,13 @@ const Container = styled(Column)`
     align-items: center;
     justify-content: space-between;
 
-    margin: 25px auto;
-    padding: 25px;
+    margin: 5px auto;
+    padding: 24px;
+    gap: 30px;
 
-    border: 1px solid ${Palette.Mandarin};
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    background: ${Palette.White};
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
 `;
-const Img = styled.img`
-    width: 13px;
-    height: 13px;
+const ContentText = styled(Typo.b4)`
+    line-height: 200%;
 `;

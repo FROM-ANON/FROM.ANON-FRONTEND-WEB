@@ -1,12 +1,11 @@
 import { MailList } from "components/Inbox/MailList";
 import { PageContainer } from "components/common/Div";
 import { Header } from "components/common/Header";
-import { Alert } from "components/common/modal/Alert";
-import { alertOpenState } from "recoil/atom";
-import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import { Toast } from "components/common/Toast";
-import { Confirm } from "components/common/modal/Confim";
+import { Confirm } from "components/common/modal/Confirm";
+import { useRecoilState } from "recoil";
+import { alertOpenState } from "recoil/atom";
 
 export const Inbox = () => {
     const [alertState, setAlertState] = useRecoilState(alertOpenState);
@@ -32,6 +31,7 @@ export const Inbox = () => {
                 <Confirm
                     text="편지를 삭제하시겠습니까?"
                     type="delete"
+                    setIsModalOpenState={setAlertState}
                     setIsConfirmedToAction={setIsConfirmedToDelete}
                 ></Confirm>
             )}
