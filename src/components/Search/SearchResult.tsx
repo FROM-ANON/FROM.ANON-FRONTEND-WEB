@@ -1,4 +1,4 @@
-import { Button } from "components/common/Button";
+import { StyledButton } from "components/common/Button";
 import { Column } from "components/common/Div";
 import styled from "styled-components";
 import { Palette } from "styles/Palette";
@@ -57,7 +57,7 @@ export const SearchResult = () => {
     );
 };
 
-const SendBtn = styled(Button)<{ isClicked: boolean }>`
+const SendBtn = styled(StyledButton)<{ isClicked: boolean }>`
     position: absolute;
     bottom: 50px;
     cursor: ${(props) => !props.isClicked && `default`};

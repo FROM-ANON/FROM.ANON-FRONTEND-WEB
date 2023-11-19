@@ -6,7 +6,7 @@ interface buttonProps {
     borderClr?: string;
 }
 
-export const Button = styled(Row)<buttonProps>`
+export const StyledButton = styled(Row)<buttonProps>`
     width: 300px;
     height: 45px;
 

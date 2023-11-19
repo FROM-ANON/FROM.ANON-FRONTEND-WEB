@@ -1,4 +1,4 @@
-import { Button } from "components/common/Button";
+import { StyledButton } from "components/common/Button";
 import { Column } from "components/common/Div";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
@@ -29,14 +29,14 @@ export const Buttons = () => {
 
     return (
         <Container gap={12} alignItems="center">
-            <Button color="var(--linear_gradient, linear-gradient(90deg, rgba(255, 214, 0, 0.90) 0%, rgba(255, 122, 0, 0.90) 24.48%, rgba(255, 0, 105, 0.90) 39.58%, rgba(211, 0, 197, 0.90) 60.42%, rgba(118, 56, 250, 0.90) 79.69%))">
+            <StyledButton color="var(--linear_gradient, linear-gradient(90deg, rgba(255, 214, 0, 0.90) 0%, rgba(255, 122, 0, 0.90) 24.48%, rgba(255, 0, 105, 0.90) 39.58%, rgba(211, 0, 197, 0.90) 60.42%, rgba(118, 56, 250, 0.90) 79.69%))">
                 <Typo.b3 color={Palette.White}>
                     인스타그램 스토리로 답장하기
                 </Typo.b3>
-            </Button>
-            <Button color={Palette.Gray05} onClick={handleReportClick}>
+            </StyledButton>
+            <StyledButton color={Palette.Gray05} onClick={handleReportClick}>
                 <Typo.b3 color={Palette.Gray50}>신고하기</Typo.b3>
-            </Button>
+            </StyledButton>
             {isModalOpen && (
                 <Confirm
                     text="편지를 신고하시겠습니까?"
