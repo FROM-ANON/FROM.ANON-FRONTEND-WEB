@@ -6,3 +6,11 @@ export const alertOpenState = atom({
         isOpen: false,
     },
 });
+
+export const WriteMailState = atom({
+    key: "writeMailState",
+    default: {
+        maiPaper: "",
+        text: "",
+    },
+});
