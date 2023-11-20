@@ -10,9 +10,9 @@ export const Confirm = ({
     text: string;
     type: string;
     setIsModalOpenState: React.Dispatch<React.SetStateAction<any>>;
-    setIsConfirmedToAction: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsConfirmedToAction?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-    const nativate = useNavigate();
+    const navigate = useNavigate();
     const handleLeftClick = () => {
         setIsModalOpenState(false);
     };
@@ -33,15 +33,15 @@ export const Confirm = ({
     const handleDelete = () => {
         // 편지 삭제
         //성공시
-        setIsConfirmedToAction(true);
+        if (setIsConfirmedToAction !== undefined) setIsConfirmedToAction(true);
     };
     const handleReport = () => {
         //편지 신고
         //성공시
-        setIsConfirmedToAction(true);
+        if (setIsConfirmedToAction !== undefined) setIsConfirmedToAction(true);
     };
     const handleProUpgrade = () => {
-        nativate("/pro");
+        navigate("/pro");
     };
 
     return (

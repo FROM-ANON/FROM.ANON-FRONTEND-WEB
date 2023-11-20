@@ -4,6 +4,7 @@ import search from "assets/icons/search.svg";
 import { Palette } from "styles/Palette";
 import deleteSearch from "assets/icons/delete-search.svg";
 import { Img } from "components/common/Img";
+import { StyledInput } from "components/common/Input";
 
 interface searchBarProps {
     text: string;
@@ -79,16 +80,7 @@ const Container = styled(Row)`
     border-radius: 12px;
     background: ${Palette.Gray05};
 `;
-const SearchInput = styled.input`
+const SearchInput = styled(StyledInput)`
     width: 85%;
-    border: none;
-    background: transparent;
-
-    font-family: PretendardMedium;
     font-size: 12px;
-    line-height: 150%;
-
-    &:focus {
-        outline: none;
-    }
 `;
