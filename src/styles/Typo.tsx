@@ -4,6 +4,12 @@ const Typo = () => {
     return <></>;
 };
 
+const Big = styled.text<{ color?: string }>`
+    font-family: PretendardMedium;
+    font-size: 35px;
+    line-height: 150%;
+    color: ${({ color }) => color};
+`;
 const Heading1 = styled.text<{ color?: string }>`
     font-family: PretendardBold;
     font-size: 28px;
@@ -72,6 +78,7 @@ const Small4 = styled.text<{ color?: string; opacity?: number }>`
     opacity: ${({ opacity }) => opacity};
 `;
 
+Typo.big = Big;
 Typo.h1 = Heading1;
 Typo.h2 = Heading2;
 Typo.h3 = Heading3;
