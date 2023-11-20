@@ -6,6 +6,7 @@ import { InboxMail } from "pages/Inbox/InboxMail";
 import { Search } from "pages/Send/Search";
 import { Write } from "pages/Send/Write";
 import { Success } from "pages/Send/Success";
+import { Mailpaper } from "pages/Mailpaper";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/send" element={<Search />} />
                     <Route path="/send/write" element={<Write />} />
                     <Route path="/send/success" element={<Success />} />
+                    <Route path="/mailpaper" element={<Mailpaper />} />
                 </Routes>
             </BrowserRouter>
         </RecoilRoot>
