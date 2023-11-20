@@ -4,7 +4,12 @@ import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
 import { useState } from "react";
 
-export const ToggleMenu = () => {
+interface tgmenuProps {
+    menu1: string;
+    menu2: string;
+}
+
+export const ToggleMenu = ({ menu1, menu2 }: tgmenuProps) => {
     const [menuClicked, setMenuClicked] = useState<boolean[]>([true, false]);
 
     const handleClickMenu1 = () => {
@@ -20,7 +25,7 @@ export const ToggleMenu = () => {
                 <Typo.s2
                     color={menuClicked[0] ? Palette.Black : Palette.Gray40}
                 >
-                    전체
+                    {menu1}
                 </Typo.s2>
                 <Typo.s2
                     color={menuClicked[0] ? Palette.Mandarin : Palette.Gray40}
@@ -32,7 +37,7 @@ export const ToggleMenu = () => {
                 <Typo.s2
                     color={menuClicked[1] ? Palette.Black : Palette.Gray40}
                 >
-                    미열람
+                    {menu2}
                 </Typo.s2>
                 <Typo.s2
                     color={menuClicked[1] ? Palette.Mandarin : Palette.Gray40}

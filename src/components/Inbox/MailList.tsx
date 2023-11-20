@@ -13,7 +13,7 @@ export const MailList = () => {
 
     return (
         <Column>
-            <ToggleMenu />
+            <ToggleMenu menu1={"전체"} menu2={"미열람"} />
             {mail.map((mailItem, index) => (
                 <Mail
                     key={index}
