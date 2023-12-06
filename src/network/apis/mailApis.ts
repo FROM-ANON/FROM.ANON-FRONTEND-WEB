@@ -50,3 +50,11 @@ export const deleteMailApi = async (mailId: number) => {
         console.log(err);
     }
 };
+
+export const reportMailApi = async (mailId: number) => {
+    try {
+        await axiosInstance.post(`/mail/report/${mailId}`);
+    } catch (err) {
+        console.log(err);
+    }
+};

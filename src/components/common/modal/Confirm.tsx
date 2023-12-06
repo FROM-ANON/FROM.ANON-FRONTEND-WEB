@@ -1,4 +1,4 @@
-import { deleteMailApi } from "network/apis/mailApis";
+import { deleteMailApi, reportMailApi } from "network/apis/mailApis";
 import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 
@@ -51,10 +51,19 @@ export const Confirm = ({
             }
         }
     };
-    const handleReport = () => {
-        //편지 신고
-        //성공시
-        if (setIsConfirmedToAction !== undefined) setIsConfirmedToAction(true);
+    const handleReport = async () => {
+        if (mailId) {
+            try {
+                // 편지 삭제
+                await reportMailApi(mailId);
+                // 성공 시
+                if (setIsConfirmedToAction !== undefined)
+                    setIsConfirmedToAction(true);
+            } catch (err) {
+                // 실패 시
+                console.error("Report failed:", err);
+            }
+        }
     };
     const handleProUpgrade = () => {
         navigate("/pro");

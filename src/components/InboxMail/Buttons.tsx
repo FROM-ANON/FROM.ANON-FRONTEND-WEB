@@ -6,8 +6,9 @@ import styled from "styled-components";
 import { Confirm } from "components/common/modal/Confirm";
 import { useEffect, useState } from "react";
 import { Toast } from "components/common/Toast";
+import { mailType } from "types";
 
-export const Buttons = () => {
+export const Buttons = ({ mail }: { mail: mailType | undefined }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const handleReportClick = () => {
         setIsModalOpen(true);
@@ -16,6 +17,7 @@ export const Buttons = () => {
     const [toast, setToast] = useState<boolean>(false);
     const [isConfirmedToReport, setIsConfirmedToReport] =
         useState<boolean>(false);
+
     useEffect(() => {
         if (isConfirmedToReport) {
             setToast(true);
@@ -43,6 +45,7 @@ export const Buttons = () => {
                     type="report"
                     setIsModalOpenState={setIsModalOpen}
                     setIsConfirmedToAction={setIsConfirmedToReport}
+                    mailId={mail?.mailId}
                 ></Confirm>
             )}
             <Toast show={toast} text="신고되었습니다." />

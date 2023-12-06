@@ -34,7 +34,7 @@ export const InboxMail = () => {
             <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
             <Column alignItems="center">
                 <Mail mail={mail} />
-                <Buttons />
+                <Buttons mail={mail} />
             </Column>
         </PageContainer>
     );
