@@ -21,3 +21,13 @@ export const postMailApi = async ({
         console.log(err);
     }
 };
+
+export const getAllMailsApi = async () => {
+    try {
+        let res = await axiosInstance.get("/mail");
+        console.log(res.data);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+};
