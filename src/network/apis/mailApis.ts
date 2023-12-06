@@ -41,3 +41,12 @@ export const getMailApi = async (mailId: number) => {
         console.log(err);
     }
 };
+
+export const deleteMailApi = async (mailId: number) => {
+    try {
+        let res = await axiosInstance.delete(`/mail/${mailId}`);
+        console.log(res.data);
+    } catch (err) {
+        console.log(err);
+    }
+};

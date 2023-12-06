@@ -7,13 +7,15 @@ import readMail from "assets/icons/read-mail.svg";
 import unreadMail from "assets/icons/unread-mail.svg";
 import trashbin from "assets/icons/trashbin.svg";
 import { StyledLink } from "components/common/Link";
-import { alertOpenState } from "recoil/atom";
+import { alertOpenState, deleteMailState } from "recoil/atom";
 import { useRecoilState } from "recoil";
 import { mailType } from "types";
 
 export const Mail = ({ mail, to }: { mail: mailType; to: string }) => {
+    const [deleteState, setDeleteState] = useRecoilState(deleteMailState);
     const [alertState, setAlertState] = useRecoilState(alertOpenState);
     const handleDelete = () => {
+        setDeleteState({ ...deleteState, mailId: mail.mailId });
         setAlertState({ ...alertState, isOpen: true });
     };
     let isRead = mail.isRead ? mail.isRead : false;

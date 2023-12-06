@@ -8,23 +8,19 @@ import { Toast } from "components/common/Toast";
 import { Confirm } from "components/common/modal/Confirm";
 import { Img } from "components/common/Img";
 import { mailType } from "types";
+import { useNavigate } from "react-router-dom";
 
 export const Mail = ({ mail }: { mail: mailType | undefined }) => {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const handleDelete = () => {
         setIsModalOpen(true);
     };
-    const [toast, setToast] = useState<boolean>(false);
     const [isConfirmedToDelete, setIsConfirmedToDelete] =
         useState<boolean>(false);
     useEffect(() => {
         if (isConfirmedToDelete) {
-            setToast(true);
-            setTimeout(() => {
-                setToast(false);
-            }, 2000);
-
-            setIsConfirmedToDelete(false);
+            navigate("/inbox");
         }
     }, [isConfirmedToDelete]);
     return (
@@ -52,9 +48,9 @@ export const Mail = ({ mail }: { mail: mailType | undefined }) => {
                             type="delete"
                             setIsModalOpenState={setIsModalOpen}
                             setIsConfirmedToAction={setIsConfirmedToDelete}
+                            mailId={mail.mailId}
                         />
                     )}
-                    <Toast show={toast} text="삭제되었습니다." />
                 </>
             )}
         </Container>

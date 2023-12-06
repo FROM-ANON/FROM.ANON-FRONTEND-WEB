@@ -1,3 +1,4 @@
+import { deleteMailApi } from "network/apis/mailApis";
 import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 
@@ -6,13 +7,17 @@ export const Confirm = ({
     type,
     setIsModalOpenState,
     setIsConfirmedToAction,
+    mailId,
 }: {
     text: string;
     type: string;
     setIsModalOpenState: React.Dispatch<React.SetStateAction<any>>;
     setIsConfirmedToAction?: React.Dispatch<React.SetStateAction<boolean>>;
+    mailId?: number;
 }) => {
     const navigate = useNavigate();
+
+    //handleClick
     const handleLeftClick = () => {
         setIsModalOpenState(false);
     };
@@ -30,10 +35,21 @@ export const Confirm = ({
         }
         setIsModalOpenState(false);
     };
-    const handleDelete = () => {
-        // 편지 삭제
-        //성공시
-        if (setIsConfirmedToAction !== undefined) setIsConfirmedToAction(true);
+
+    //delete, report, upgrade
+    const handleDelete = async () => {
+        if (mailId) {
+            try {
+                // 편지 삭제
+                await deleteMailApi(mailId);
+                // 성공 시
+                if (setIsConfirmedToAction !== undefined)
+                    setIsConfirmedToAction(true);
+            } catch (err) {
+                // 실패 시
+                console.error("Delete failed:", err);
+            }
+        }
     };
     const handleReport = () => {
         //편지 신고

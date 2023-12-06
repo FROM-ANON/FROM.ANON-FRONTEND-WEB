@@ -15,3 +15,11 @@ export const WriteMailState = atom({
         text: "",
     },
 });
+
+export const deleteMailState = atom({
+    key: "deleteMailState",
+    default: {
+        mailId: 0,
+        isConfirmedToDelete: false,
+    },
+});
