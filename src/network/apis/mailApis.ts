@@ -31,3 +31,13 @@ export const getAllMailsApi = async () => {
         console.log(err);
     }
 };
+
+export const getMailApi = async (mailId: number) => {
+    try {
+        let res = await axiosInstance.get(`/mail/${mailId}`);
+        console.log(res.data);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+};
