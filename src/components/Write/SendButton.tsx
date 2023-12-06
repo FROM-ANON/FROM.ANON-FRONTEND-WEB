@@ -1,18 +1,37 @@
 import { StyledButton } from "components/common/Button";
 import styled from "styled-components";
 import Typo from "styles/Typo";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { WriteMailState } from "recoil/atom";
 import { Palette } from "styles/Palette";
 import { Row } from "components/common/Div";
 import { useNavigate } from "react-router-dom";
+import { postMailApi } from "network/apis/mailApis";
 
 export const SendButton = () => {
     const navigate = useNavigate();
-    const writeState = useRecoilValue(WriteMailState);
-    const handleClick = () => {
-        if (writeState.text) {
-            navigate("/send/success");
+    const [writeState, setWriteState] = useRecoilState(WriteMailState);
+
+    const handleClick = async () => {
+        try {
+            let res = await postMailApi({
+                userId: writeState.userId,
+                mailPaperId: writeState.mailPaperId,
+                text: writeState.text,
+            });
+            if (res) {
+                console.log(res);
+                //WriteMailState 초기화
+                setWriteState({
+                    userId: 1,
+                    mailPaperId: 1,
+                    text: "",
+                });
+
+                navigate("/send/success");
+            }
+        } catch (err) {
+            console.log(err);
         }
     };
 
