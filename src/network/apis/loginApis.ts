@@ -22,3 +22,13 @@ export const loginAndGetTokensApi = async (code: string) => {
         window.location.href = "/login";
     }
 };
+
+export const signupApi = async () => {
+    try {
+        let res = await axiosInstance.post("/signup");
+        console.log(res.data);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+};

@@ -11,6 +11,8 @@ import termCheckYes from "assets/icons/term-check-yes.svg";
 import termMore from "assets/icons/term-more.svg";
 import { StyledLink } from "components/common/Link";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signupApi } from "network/apis/loginApis";
 
 export const Terms = () => {
     const [allChecked, setAllChecked] = useState<boolean>(false);
@@ -80,6 +82,20 @@ export const Terms = () => {
             setAllChecked(false); //체크되지 않은 약관이 있을 경우 전체 체크 버튼 해제
         }
     }, [checkboxStates]);
+    const navigate = useNavigate();
+    const handleClickBtn = async () => {
+        if (allChecked) {
+            let signupSuccess = false;
+            try {
+                await signupApi();
+                signupSuccess = true;
+            } catch {}
+
+            if (signupSuccess) {
+                navigate("/");
+            }
+        }
+    };
 
     return (
         <Container>
@@ -156,17 +172,16 @@ export const Terms = () => {
                 </Row>
             </TermContainer>
             <BtnContainer>
-                <StyledLink to={allChecked ? "/" : ""}>
-                    <StyledButton
-                        color={allChecked ? Palette.Mandarin : Palette.Gray05}
+                <StyledButton
+                    color={allChecked ? Palette.Mandarin : Palette.Gray05}
+                    onClick={handleClickBtn}
+                >
+                    <Typo.b3
+                        color={allChecked ? Palette.White : Palette.Gray50}
                     >
-                        <Typo.b3
-                            color={allChecked ? Palette.White : Palette.Gray50}
-                        >
-                            확인
-                        </Typo.b3>
-                    </StyledButton>
-                </StyledLink>
+                        확인
+                    </Typo.b3>
+                </StyledButton>
             </BtnContainer>
         </Container>
     );
