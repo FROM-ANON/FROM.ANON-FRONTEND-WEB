@@ -10,7 +10,7 @@ export const Search = () => {
     const [searchText, setSearchText] = useState<string>("");
 
     return (
-        <PageContainer alignItems="center">
+        <Column alignItems="center">
             <Header type="sub" text="편지 보내기" />
             <Column gap={29} alignItems="center" justifyContent="flex-start">
                 <SearchBar
@@ -21,6 +21,6 @@ export const Search = () => {
                 />
                 {isSearched && <SearchResult />}
             </Column>
-        </PageContainer>
+        </Column>
     );
 };

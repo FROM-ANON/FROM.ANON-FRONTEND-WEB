@@ -13,7 +13,7 @@ export const Write = () => {
     const [writeState, setWriteState] = useRecoilState(WriteMailState);
 
     return (
-        <PageContainer alignItems="center">
+        <Column alignItems="center">
             <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
             <Container gap={20}>
                 <Typo.h3>@Insta_id에게</Typo.h3>
@@ -28,7 +28,7 @@ export const Write = () => {
                 </Column>
             </Container>
             <SendButton />
-        </PageContainer>
+        </Column>
     );
 };
 

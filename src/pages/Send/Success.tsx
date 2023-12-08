@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 export const Success = () => {
     return (
-        <PageContainer justifyContent="center">
+        <Column justifyContent="center">
             <Wrapper>
                 <Img src="/logo.svg" width={88.1} height={97.5} alt="Logo" />
                 <Typo.h3>편지가 전송되었습니다.</Typo.h3>
@@ -25,7 +25,7 @@ export const Success = () => {
                     </StyledButton>
                 </StyledLink>
             </Buttons>
-        </PageContainer>
+        </Column>
     );
 };
 
@@ -34,11 +34,11 @@ const Wrapper = styled(Column)`
     align-items: center;
 
     position: fixed;
-    top: 220px;
+    top: 200px;
 `;
 const Buttons = styled(Column)`
     gap: 21px;
 
     position: fixed;
-    bottom: 53px;
+    bottom: 155px;
 `;

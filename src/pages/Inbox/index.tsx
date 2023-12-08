@@ -1,5 +1,5 @@
 import { MailList } from "components/Inbox/MailList";
-import { PageContainer } from "components/common/Div";
+import { Column, PageContainer } from "components/common/Div";
 import { Header } from "components/common/Header";
 import { useEffect, useState } from "react";
 import { Toast } from "components/common/Toast";
@@ -28,7 +28,7 @@ export const Inbox = () => {
     }, [isConfirmedToDelete]);
 
     return (
-        <PageContainer>
+        <Column>
             <Header type="sub" text="받은 편지함" />
             <MailList key={refreshKey} />
             {alertState.isOpen && (
@@ -41,6 +41,6 @@ export const Inbox = () => {
                 ></Confirm>
             )}
             <Toast show={toast} text="삭제되었습니다." />
-        </PageContainer>
+        </Column>
     );
 };
