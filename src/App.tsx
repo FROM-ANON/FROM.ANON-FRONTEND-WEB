@@ -9,6 +9,7 @@ import { Success } from "pages/Send/Success";
 import { Mailpaper } from "pages/Mailpaper";
 import { Pro } from "pages/Pro";
 import { Login } from "pages/Login";
+import { Oauth } from "pages/Login/Oauth";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/login/oauth" element={<Oauth />} />
                     <Route path="/inbox" element={<Inbox />} />
                     <Route path="/inbox/mail/:id" element={<InboxMail />} />
                     <Route path="/send" element={<Search />} />
