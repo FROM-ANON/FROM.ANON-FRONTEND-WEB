@@ -10,6 +10,9 @@ import { Mailpaper } from "pages/Mailpaper";
 import { Pro } from "pages/Pro";
 import { Login } from "pages/Login";
 import { Oauth } from "pages/Login/Oauth";
+import { Terms } from "pages/Login/Terms";
+import { TermOfPrivacyPolicy } from "pages/Login/TermOfPrivacyPolicy";
+import { TermOfUse } from "pages/Login/TermOfUse";
 
 function App() {
     return (
@@ -19,6 +22,15 @@ function App() {
                     <Route path="/" element={<Main />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/login/oauth" element={<Oauth />} />
+                    <Route path="/login/terms" element={<Terms />} />
+                    <Route
+                        path="/login/terms/privacy-policy"
+                        element={<TermOfPrivacyPolicy />}
+                    />{" "}
+                    <Route
+                        path="/login/terms/use-policy"
+                        element={<TermOfUse />}
+                    />
                     <Route path="/inbox" element={<Inbox />} />
                     <Route path="/inbox/mail/:id" element={<InboxMail />} />
                     <Route path="/send" element={<Search />} />
