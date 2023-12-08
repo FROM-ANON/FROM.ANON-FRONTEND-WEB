@@ -27,7 +27,7 @@ export const InboxMail = () => {
         };
 
         getMail();
-    }, []);
+    }, [idInt]);
 
     return (
         <PageContainer backgroundColor={Palette.Mandarin20}>
