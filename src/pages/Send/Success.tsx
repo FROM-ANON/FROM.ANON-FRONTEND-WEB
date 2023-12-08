@@ -1,5 +1,5 @@
 import { StyledButton } from "components/common/Button";
-import { Column, PageContainer } from "components/common/Div";
+import { Column } from "components/common/Div";
 import { Img } from "components/common/Img";
 import { StyledLink } from "components/common/Link";
 import { Palette } from "styles/Palette";

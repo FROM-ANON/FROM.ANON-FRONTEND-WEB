@@ -1,7 +1,7 @@
 import { Buttons } from "components/Write/Buttons";
 import { SendButton } from "components/Write/SendButton";
 import { TextInputBox } from "components/Write/TextInputBox";
-import { Column, PageContainer, Row } from "components/common/Div";
+import { Column, Row } from "components/common/Div";
 import { Header } from "components/common/Header";
 import styled from "styled-components";
 import Typo from "styles/Typo";

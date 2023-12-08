@@ -1,6 +1,6 @@
 import { SearchBar } from "components/Search/SearchBar";
 import { SearchResult } from "components/Search/SearchResult";
-import { Column, PageContainer } from "components/common/Div";
+import { Column } from "components/common/Div";
 import { Header } from "components/common/Header";
 import { useState } from "react";
 

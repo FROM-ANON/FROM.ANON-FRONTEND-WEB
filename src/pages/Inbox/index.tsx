@@ -1,5 +1,5 @@
 import { MailList } from "components/Inbox/MailList";
-import { Column, PageContainer } from "components/common/Div";
+import { Column } from "components/common/Div";
 import { Header } from "components/common/Header";
 import { useEffect, useState } from "react";
 import { Toast } from "components/common/Toast";
