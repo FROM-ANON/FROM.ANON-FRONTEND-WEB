@@ -6,7 +6,7 @@ export const Menus = () => {
     return (
         <Container>
             <Menu to="/inbox">받은 편지함</Menu>
-            <Menu to="/" underComponent={true}>
+            <Menu to="https://www.instagram.com/" underComponent={true}>
                 편지함 링크 공유하기
             </Menu>
             <Menu to="/send">편지 보내기</Menu>

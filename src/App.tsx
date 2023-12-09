@@ -20,8 +20,8 @@ function App() {
         <RecoilRoot>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/onboarding" element={<OnBoarding />} />
-                    <Route path="/" element={<Main />} />
+                    <Route path="/" element={<OnBoarding />} />
+                    <Route path="/main" element={<Main />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/login/oauth" element={<Oauth />} />
                     <Route path="/login/terms" element={<Terms />} />
