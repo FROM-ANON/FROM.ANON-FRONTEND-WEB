@@ -108,7 +108,7 @@ export const OnBoarding = () => {
 const Container = styled(Column)`
     justify-content: center;
     align-items: center;
-    padding: 140px 0;
+    padding-top: 100px;
 `;
 const Circle = styled.div<{ isFocused: boolean }>`
     width: 8px;
