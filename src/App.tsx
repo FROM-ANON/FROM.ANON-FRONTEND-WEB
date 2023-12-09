@@ -34,7 +34,7 @@ function App() {
                     <Route path="/inbox" element={<Inbox />} />
                     <Route path="/inbox/mail/:id" element={<InboxMail />} />
                     <Route path="/send" element={<Search />} />
-                    <Route path="/send/write" element={<Write />} />
+                    <Route path="/send/write/:id" element={<Write />} />
                     <Route path="/send/success" element={<Success />} />
                     <Route path="/mailpaper" element={<Mailpaper />} />
                     <Route path="/pro" element={<Pro />} />

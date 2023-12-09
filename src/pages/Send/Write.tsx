@@ -8,15 +8,38 @@ import Typo from "styles/Typo";
 import { WriteMailState } from "recoil/atom";
 import { useRecoilState } from "recoil";
 import { Palette } from "styles/Palette";
+import { useParams } from "react-router-dom";
+import { getUserApi } from "network/apis/userApis";
+import { useEffect, useState } from "react";
+import { userType } from "types";
 
 export const Write = () => {
     const [writeState, setWriteState] = useRecoilState(WriteMailState);
+    const { id } = useParams();
+    const idInt = id ? parseInt(id) : null;
+    const [userSendTo, setUserSendTo] = useState<userType>();
+
+    useEffect(() => {
+        const getUser = async () => {
+            if (idInt !== null) {
+                try {
+                    let res = await getUserApi(idInt);
+                    setUserSendTo(res);
+                    setWriteState({ ...writeState, userId: idInt });
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        };
+
+        getUser();
+    }, [idInt]);
 
     return (
         <Column alignItems="center">
             <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
             <Container gap={20}>
-                <Typo.h3>@Insta_id에게</Typo.h3>
+                <Typo.h3>@{userSendTo?.instaId}에게</Typo.h3>
                 <Buttons></Buttons>
                 <Column gap={20}>
                     <TextInputBox></TextInputBox>
