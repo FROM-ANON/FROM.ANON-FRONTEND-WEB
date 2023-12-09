@@ -18,4 +18,5 @@ export const Menus = () => {
 const Container = styled(Column)`
     gap: 15px;
     padding: 0 27px;
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.25));
 `;
