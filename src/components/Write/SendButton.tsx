@@ -19,7 +19,7 @@ export const SendButton = () => {
                 mailPaperId: writeState.mailPaperId,
                 text: writeState.text,
             });
-            if (res) {
+            if (res && res.status === 201) {
                 console.log(res);
                 //WriteMailState 초기화
                 setWriteState({

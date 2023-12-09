@@ -16,7 +16,7 @@ export const postMailApi = async ({
             text: text,
         };
         let res = await axiosInstance.post(`/mail`, body);
-        return res.data;
+        return res;
     } catch (err) {
         console.log(err);
     }
