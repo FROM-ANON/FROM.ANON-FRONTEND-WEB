@@ -7,9 +7,15 @@ import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import { StyledButton } from "components/common/Button";
 import grayCheck from "assets/icons/gray-check.svg";
+import { useRecoilState } from "recoil";
+import { alertOpenState } from "recoil/atom";
+import { Alert } from "components/common/modal/Alert";
 
 export const Pro = () => {
-    const handleClick = () => {};
+    const [alertState, setAlertState] = useRecoilState(alertOpenState);
+    const handleClick = () => {
+        setAlertState({ isOpen: true });
+    };
 
     return (
         <Column>
@@ -79,6 +85,9 @@ export const Pro = () => {
                     </Typo.b3>
                 </Button>
             </Column>
+            {alertState.isOpen && (
+                <Alert text="해당 기능은 앱에서만 제공됩니다."></Alert>
+            )}
         </Column>
     );
 };
