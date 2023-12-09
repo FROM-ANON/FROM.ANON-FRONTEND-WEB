@@ -7,9 +7,15 @@ import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import { StyledButton } from "components/common/Button";
 import grayCheck from "assets/icons/gray-check.svg";
+import { useRecoilState } from "recoil";
+import { alertOpenState } from "recoil/atom";
+import { Alert } from "components/common/modal/Alert";
 
 export const Pro = () => {
-    const handleClick = () => {};
+    const [alertState, setAlertState] = useRecoilState(alertOpenState);
+    const handleClick = () => {
+        setAlertState({ isOpen: true });
+    };
 
     return (
         <Column>
@@ -39,7 +45,7 @@ export const Pro = () => {
                             alt="logo text"
                         />
                     </Column>
-                    <Column gap={7}>
+                    <Column gap={15}>
                         <Typo.s2 color="#FF4040">출시 기념 프로모션</Typo.s2>
                         <Row gap={14} alignItems="center">
                             <Typo.big>월 $1</Typo.big>
@@ -67,17 +73,6 @@ export const Pro = () => {
                                     alt="gray check icon"
                                 />
                                 <Typo.b4 color={Palette.Gray70}>
-                                    상대방 편지 읽음 확인 기능
-                                </Typo.b4>
-                            </Row>
-                            <Row gap={12}>
-                                <Img
-                                    src={grayCheck}
-                                    width={24}
-                                    height={24}
-                                    alt="gray check icon"
-                                />
-                                <Typo.b4 color={Palette.Gray70}>
                                     편지 내 사진 첨부 기능
                                 </Typo.b4>
                             </Row>
@@ -90,6 +85,9 @@ export const Pro = () => {
                     </Typo.b3>
                 </Button>
             </Column>
+            {alertState.isOpen && (
+                <Alert text="해당 기능은 앱에서만 제공됩니다."></Alert>
+            )}
         </Column>
     );
 };
@@ -107,7 +105,7 @@ const Container = styled(Column)`
     width: 300px;
 `;
 const ExplainBenefit = styled(Column)`
-    height: 155px;
+    height: 120px;
 
     padding: 30px;
     gap: 12px;

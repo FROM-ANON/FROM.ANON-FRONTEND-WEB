@@ -7,7 +7,7 @@ export const Mailpaper = () => {
     return (
         <Column>
             <Header type="sub" text="편지지" />
-            <ToggleMenu menu1={"전체"} menu2={"즐겨찾기"} />
+            {/* <ToggleMenu menu1={"전체"} menu2={"즐겨찾기"} /> */}
             <MailpapersList></MailpapersList>
         </Column>
     );

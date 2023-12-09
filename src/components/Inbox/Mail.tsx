@@ -7,16 +7,18 @@ import readMail from "assets/icons/read-mail.svg";
 import unreadMail from "assets/icons/unread-mail.svg";
 import trashbin from "assets/icons/trashbin.svg";
 import { StyledLink } from "components/common/Link";
-import { alertOpenState } from "recoil/atom";
+import { alertOpenState, deleteMailState } from "recoil/atom";
 import { useRecoilState } from "recoil";
-import { useEffect, useState } from "react";
-import { Alert } from "components/common/modal/Alert";
+import { mailType } from "types";
 
-export const Mail = ({ isRead, to }: { isRead: boolean; to: string }) => {
+export const Mail = ({ mail, to }: { mail: mailType; to: string }) => {
+    const [deleteState, setDeleteState] = useRecoilState(deleteMailState);
     const [alertState, setAlertState] = useRecoilState(alertOpenState);
     const handleDelete = () => {
+        setDeleteState({ ...deleteState, mailId: mail.mailId });
         setAlertState({ ...alertState, isOpen: true });
     };
+    let isRead = mail.isRead ? mail.isRead : false;
 
     return (
         <Container isRead={isRead}>
@@ -33,22 +35,20 @@ export const Mail = ({ isRead, to }: { isRead: boolean; to: string }) => {
                 justifyContent="space-between"
                 alignItems="flex-end"
             >
-                <StyledLink to={to}>
-                    <Column gap={4}>
+                <Column gap={4}>
+                    <StyledLink to={to}>
                         <Row justifyContent="space-between" alignItems="center">
                             <Typo.s4 color={Palette.Gray40}>
                                 {isRead ? "읽은 편지" : "안읽은 편지"}
                             </Typo.s4>
                             <Typo.s4 color={Palette.Gray40}>
-                                10.21 07:39
+                                {mail.createdTime}
                             </Typo.s4>
                         </Row>
-                        <Typo.s4 color={Palette.Gray70}>
-                            편지글 내용 내용 편지글 내용 편지글 내용 편지글 내용
-                            편지글 내용 편지글 내용 편지글 내용 편지
-                        </Typo.s4>
-                    </Column>
-                </StyledLink>
+                        <Typo.s4 color={Palette.Gray70}>{mail.text}</Typo.s4>
+                    </StyledLink>
+                </Column>
+
                 <div>
                     <Img
                         src={trashbin}

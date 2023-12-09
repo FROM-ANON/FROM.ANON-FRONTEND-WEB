@@ -2,15 +2,7 @@ import { alertOpenState } from "recoil/atom";
 import { useSetRecoilState } from "recoil";
 import Modal from "./Modal";
 
-export const Alert = ({
-    text,
-    type,
-    setIsConfirmedToAction,
-}: {
-    text: string;
-    type: string;
-    setIsConfirmedToAction: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+export const Alert = ({ text }: { text: string }) => {
     const setIsOpen = useSetRecoilState(alertOpenState);
     const handleClick = () => {
         setIsOpen({ isOpen: false });

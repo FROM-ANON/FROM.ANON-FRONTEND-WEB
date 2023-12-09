@@ -6,7 +6,7 @@ export const Menus = () => {
     return (
         <Container>
             <Menu to="/inbox">받은 편지함</Menu>
-            <Menu to="/" underComponent={true}>
+            <Menu to="https://www.instagram.com/" underComponent={true}>
                 편지함 링크 공유하기
             </Menu>
             <Menu to="/send">편지 보내기</Menu>
@@ -18,4 +18,5 @@ export const Menus = () => {
 const Container = styled(Column)`
     gap: 15px;
     padding: 0 27px;
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.25));
 `;

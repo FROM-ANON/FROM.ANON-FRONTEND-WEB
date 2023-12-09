@@ -17,21 +17,21 @@ export const Menu = ({
     underComponent?: boolean;
 }) => {
     return (
-        <StyledLink to={to}>
-            <Container underComponent={underComponent}>
-                <Row justifyContent="space-between" alignItems="center">
-                    <Typo.h3>{children}</Typo.h3>
+        <Container underComponent={underComponent}>
+            <Row justifyContent="space-between" alignItems="center">
+                <Typo.h3>{children}</Typo.h3>
+                <StyledLink to={to}>
                     <Img
                         src={rightArrow}
                         width={11}
                         height={19}
                         alt="right arrow"
                     />
-                </Row>
-                {/* "편지함 링크 공유하기" 메뉴의 경우 Link component 추가 */}
-                {underComponent && <Link />}
-            </Container>
-        </StyledLink>
+                </StyledLink>
+            </Row>
+            {/* "편지함 링크 공유하기" 메뉴의 경우 Link component 추가 */}
+            {underComponent && <Link />}
+        </Container>
     );
 };
 

@@ -3,63 +3,56 @@ import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
 import trashbin from "assets/icons/trashbin-colored.svg";
-import { useRecoilState } from "recoil";
-import { alertOpenState } from "recoil/atom";
 import { useEffect, useState } from "react";
 import { Toast } from "components/common/Toast";
 import { Confirm } from "components/common/modal/Confirm";
 import { Img } from "components/common/Img";
+import { mailType } from "types";
+import { useNavigate } from "react-router-dom";
 
-export const Mail = () => {
+export const Mail = ({ mail }: { mail: mailType | undefined }) => {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const handleDelete = () => {
         setIsModalOpen(true);
     };
-    const [toast, setToast] = useState<boolean>(false);
     const [isConfirmedToDelete, setIsConfirmedToDelete] =
         useState<boolean>(false);
     useEffect(() => {
         if (isConfirmedToDelete) {
-            setToast(true);
-            setTimeout(() => {
-                setToast(false);
-            }, 2000);
-
-            setIsConfirmedToDelete(false);
+            navigate("/inbox");
         }
     }, [isConfirmedToDelete]);
     return (
         <Container>
-            <ContentText>
-                <u>
-                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용
-                    편지글 내용 편지글 내용 편지글 내용 편지글 내용 ...편지글
-                    내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글
-                    내용 편지글 내용 편지글 내용 편지글 내용 편지글 내용 편지글
-                    내용 편지글 내용
-                </u>
-            </ContentText>
-            <Row justifyContent="space-between" alignItems="center">
-                <Typo.s4 color={Palette.Mandarin}>23.10.30 1:00:21</Typo.s4>
-                <Img
-                    src={trashbin}
-                    onClick={handleDelete}
-                    width={14}
-                    height={13.96}
-                    alt="delete button"
-                />
-            </Row>
-            {isModalOpen && (
-                <Confirm
-                    text="편지를 삭제하시겠습니까?"
-                    type="delete"
-                    setIsModalOpenState={setIsModalOpen}
-                    setIsConfirmedToAction={setIsConfirmedToDelete}
-                ></Confirm>
+            {mail !== undefined && (
+                <>
+                    <ContentText>
+                        <u>{mail.text}</u>
+                    </ContentText>
+                    <Row justifyContent="space-between" alignItems="center">
+                        <Typo.s4 color={Palette.Mandarin}>
+                            {mail.createdTime}
+                        </Typo.s4>
+                        <Img
+                            src={trashbin}
+                            onClick={handleDelete}
+                            width={14}
+                            height={13.96}
+                            alt="delete button"
+                        />
+                    </Row>
+                    {isModalOpen && (
+                        <Confirm
+                            text="편지를 삭제하시겠습니까?"
+                            type="delete"
+                            setIsModalOpenState={setIsModalOpen}
+                            setIsConfirmedToAction={setIsConfirmedToDelete}
+                            mailId={mail.mailId}
+                        />
+                    )}
+                </>
             )}
-            <Toast show={toast} text="삭제되었습니다." />
         </Container>
     );
 };

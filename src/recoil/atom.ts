@@ -10,7 +10,16 @@ export const alertOpenState = atom({
 export const WriteMailState = atom({
     key: "writeMailState",
     default: {
-        maiPaper: "",
+        userId: 1,
+        mailPaperId: 1,
         text: "",
+    },
+});
+
+export const deleteMailState = atom({
+    key: "deleteMailState",
+    default: {
+        mailId: 0,
+        isConfirmedToDelete: false,
     },
 });
