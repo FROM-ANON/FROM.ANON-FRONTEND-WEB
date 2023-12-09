@@ -6,3 +6,9 @@ export interface mailType {
     createdTime?: string;
     isRead?: boolean;
 }
+export interface userType {
+    userId: number;
+    instaUserId: number;
+    instaId: string;
+    pro?: boolean;
+}
