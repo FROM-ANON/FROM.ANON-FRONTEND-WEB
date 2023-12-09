@@ -13,12 +13,14 @@ import { Oauth } from "pages/Login/Oauth";
 import { Terms } from "pages/Login/Terms";
 import { TermOfPrivacyPolicy } from "pages/Login/TermOfPrivacyPolicy";
 import { TermOfUse } from "pages/Login/TermOfUse";
+import { OnBoarding } from "pages/OnBoarding";
 
 function App() {
     return (
         <RecoilRoot>
             <BrowserRouter>
                 <Routes>
+                    <Route path="/onboarding" element={<OnBoarding />} />
                     <Route path="/" element={<Main />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/login/oauth" element={<Oauth />} />
