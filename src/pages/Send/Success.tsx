@@ -19,7 +19,7 @@ export const Success = () => {
                         <Typo.b3>다른 편지 보내기</Typo.b3>
                     </StyledButton>
                 </StyledLink>
-                <StyledLink to="/">
+                <StyledLink to="/main">
                     <StyledButton color={Palette.Mandarin20}>
                         <Typo.b3>홈으로 가기</Typo.b3>
                     </StyledButton>
