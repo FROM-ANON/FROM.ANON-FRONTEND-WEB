@@ -92,7 +92,7 @@ export const Terms = () => {
             } catch {}
 
             if (signupSuccess) {
-                navigate("/");
+                navigate("/main");
             }
         }
     };
