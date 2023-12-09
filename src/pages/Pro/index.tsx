@@ -39,7 +39,7 @@ export const Pro = () => {
                             alt="logo text"
                         />
                     </Column>
-                    <Column gap={7}>
+                    <Column gap={15}>
                         <Typo.s2 color="#FF4040">출시 기념 프로모션</Typo.s2>
                         <Row gap={14} alignItems="center">
                             <Typo.big>월 $1</Typo.big>
@@ -57,17 +57,6 @@ export const Pro = () => {
                                 />
                                 <Typo.b4 color={Palette.Gray70}>
                                     모든 편지지 제한 없이 사용
-                                </Typo.b4>
-                            </Row>
-                            <Row gap={12}>
-                                <Img
-                                    src={grayCheck}
-                                    width={24}
-                                    height={24}
-                                    alt="gray check icon"
-                                />
-                                <Typo.b4 color={Palette.Gray70}>
-                                    상대방 편지 읽음 확인 기능
                                 </Typo.b4>
                             </Row>
                             <Row gap={12}>
@@ -107,7 +96,7 @@ const Container = styled(Column)`
     width: 300px;
 `;
 const ExplainBenefit = styled(Column)`
-    height: 155px;
+    height: 120px;
 
     padding: 30px;
     gap: 12px;
