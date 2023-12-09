@@ -19,3 +19,12 @@ export const getUserApi = async (userId: number) => {
         console.log(err);
     }
 };
+
+export const delUserApi = async () => {
+    try {
+        let res = await axiosInstance.delete(`/user`);
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
+};

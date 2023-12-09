@@ -1,6 +1,7 @@
 import { deleteMailApi, reportMailApi } from "network/apis/mailApis";
 import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
+import { delUserApi } from "network/apis/userApis";
 
 export const Confirm = ({
     text,
@@ -26,6 +27,9 @@ export const Confirm = ({
             case "delete":
                 handleDelete();
                 break;
+            case "delUser":
+                handleDelUser();
+                break;
             case "report":
                 handleReport();
                 break;
@@ -49,6 +53,18 @@ export const Confirm = ({
                 // 실패 시
                 console.error("Delete failed:", err);
             }
+        }
+    };
+    const handleDelUser = async () => {
+        try {
+            // 유저 삭제
+            let res = await delUserApi();
+            // 성공 시
+            if (setIsConfirmedToAction !== undefined && res?.status === 200)
+                setIsConfirmedToAction(true);
+        } catch (err) {
+            // 실패 시
+            console.error("Delete failed:", err);
         }
     };
     const handleReport = async () => {
