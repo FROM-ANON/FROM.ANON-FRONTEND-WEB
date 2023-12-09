@@ -19,7 +19,9 @@ export const Search = () => {
                     setIsSearched={setIsSearched}
                     setSearchText={setSearchText}
                 />
-                {isSearched && <SearchResult />}
+                {isSearched && (
+                    <SearchResult key={searchText} searchText={searchText} />
+                )}
             </Column>
         </Column>
     );
