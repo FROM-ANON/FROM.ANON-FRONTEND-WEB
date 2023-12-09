@@ -2,21 +2,32 @@ import styled from "styled-components";
 import { Row } from "./Div";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface tgmenuProps {
     menu1: string;
     menu2: string;
+    menu1Len: number | undefined;
+    menu2Len: number | undefined;
+    setToggleMenu: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const ToggleMenu = ({ menu1, menu2 }: tgmenuProps) => {
+export const ToggleMenu = ({
+    menu1,
+    menu2,
+    menu1Len,
+    menu2Len,
+    setToggleMenu,
+}: tgmenuProps) => {
     const [menuClicked, setMenuClicked] = useState<boolean[]>([true, false]);
 
     const handleClickMenu1 = () => {
         setMenuClicked([true, false]);
+        setToggleMenu(0);
     };
     const handleClickMenu2 = () => {
         setMenuClicked([false, true]);
+        setToggleMenu(1);
     };
 
     return (
@@ -30,7 +41,7 @@ export const ToggleMenu = ({ menu1, menu2 }: tgmenuProps) => {
                 <Typo.s2
                     color={menuClicked[0] ? Palette.Mandarin : Palette.Gray40}
                 >
-                    &nbsp;10
+                    &nbsp;{menu1Len === undefined ? 0 : menu1Len}
                 </Typo.s2>
             </TextRow>
             <TextRow onClick={handleClickMenu2}>
@@ -42,7 +53,7 @@ export const ToggleMenu = ({ menu1, menu2 }: tgmenuProps) => {
                 <Typo.s2
                     color={menuClicked[1] ? Palette.Mandarin : Palette.Gray40}
                 >
-                    &nbsp;5
+                    &nbsp;{menu2Len === undefined ? 0 : menu2Len}
                 </Typo.s2>
             </TextRow>
         </Container>

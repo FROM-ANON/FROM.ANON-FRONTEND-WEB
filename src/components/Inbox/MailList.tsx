@@ -2,28 +2,45 @@ import { ToggleMenu } from "components/common/ToggleMenu";
 import { Mail } from "./Mail";
 import { Column } from "components/common/Div";
 import { useEffect, useState } from "react";
-import { getAllMailsApi } from "network/apis/mailApis";
+import { getAllMailsApi, getAllNotReadMailsApi } from "network/apis/mailApis";
 import { mailType } from "types";
 
 export const MailList = () => {
-    const [mails, setMails] = useState<Array<mailType>>();
+    const [allMails, setAllMails] = useState<Array<mailType>>();
+    const [notReadMails, setNotreadMails] = useState<Array<mailType>>();
+    const [toggleMenu, setToggleMenu] = useState<number>(0);
+    let mails = toggleMenu === 0 ? allMails : notReadMails;
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchMails = async () => {
             try {
                 let res = await getAllMailsApi();
-                setMails(res);
-                console.log(res);
+                setAllMails(res);
             } catch (err) {
                 console.log(err);
             }
         };
-        fetchPosts();
+        const fetchNotReadMails = async () => {
+            try {
+                let res = await getAllNotReadMailsApi();
+                setNotreadMails(res);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchMails();
+        fetchNotReadMails();
     }, []);
 
     return (
         <Column>
-            <ToggleMenu menu1={"전체"} menu2={"미열람"} />
+            <ToggleMenu
+                menu1={"전체"}
+                menu2={"미열람"}
+                menu1Len={allMails?.length}
+                menu2Len={notReadMails?.length}
+                setToggleMenu={setToggleMenu}
+            />
             {mails &&
                 mails.map((mailItem) => (
                     <Mail
