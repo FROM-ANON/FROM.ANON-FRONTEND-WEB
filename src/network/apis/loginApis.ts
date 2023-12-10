@@ -12,7 +12,7 @@ export const loginAndGetTokensApi = async (code: string) => {
         if (res.data.isNewUser) {
             window.location.href = "/login/terms";
         } else {
-            window.location.href = "/";
+            window.location.href = "/main";
         }
         console.log(res.data);
         return res.data;

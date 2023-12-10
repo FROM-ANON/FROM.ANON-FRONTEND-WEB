@@ -1,14 +1,11 @@
 import { Row } from "components/common/Div";
 import { Img } from "components/common/Img";
-import { Toast } from "components/common/Toast";
-import { useState } from "react";
 import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
 import chain from "assets/icons/chain.svg";
 
 export const Link = () => {
-    const [toast, setToast] = useState<boolean>(false);
     const handleClickButton = () => {
         try {
             const textArea = document.createElement("textarea");
@@ -20,12 +17,6 @@ export const Link = () => {
             document.execCommand("copy");
 
             document.body.removeChild(textArea);
-            setToast(true);
-
-            //2초 뒤 toast 팝업 삭제
-            setTimeout(() => {
-                setToast(false);
-            }, 2000);
         } catch (error) {
             console.error("클립보드 복사 오류:", error);
         }
@@ -42,7 +33,6 @@ export const Link = () => {
             <Button onClick={handleClickButton}>
                 <Typo.s4 color={Palette.Gray60}>복사</Typo.s4>
             </Button>
-            <Toast show={toast} text="링크가 복사되었습니다." />
         </Row>
     );
 };
