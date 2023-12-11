@@ -1,15 +1,17 @@
 import { Row } from "components/common/Div";
 import { Confirm } from "components/common/modal/Confirm";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
 
 export const Buttons = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const handleWritePaperClick = () => {
-        setIsModalOpen(true);
+        navigate("/mailpaper");
     };
     const handleAttachPicClick = () => {
         setIsModalOpen(true);

@@ -5,7 +5,7 @@ import { Header } from "components/common/Header";
 import { getMailApi } from "network/apis/mailApis";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Palette } from "styles/Palette";
+import styled from "styled-components";
 import { mailType } from "types";
 
 export const InboxMail = () => {
@@ -30,12 +30,23 @@ export const InboxMail = () => {
     }, [idInt]);
 
     return (
-        <PageContainer backgroundColor={Palette.Mandarin20}>
-            <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
-            <Column alignItems="center">
-                <Mail mail={mail} />
-                <Buttons mail={mail} />
-            </Column>
-        </PageContainer>
+        <>
+            {mail && (
+                <Container mailPaperId={mail.mailPaperId}>
+                    <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
+                    <Column alignItems="center">
+                        <Mail mail={mail} />
+                        <Buttons mail={mail} />
+                    </Column>
+                </Container>
+            )}
+        </>
     );
 };
+
+const Container = styled(PageContainer)<{ mailPaperId: number }>`
+    background-image: ${(props) =>
+        `url("/mailPaper/${props.mailPaperId}.svg")`};
+    background-size: cover;
+    background-repeat: no-repeat;
+`;
