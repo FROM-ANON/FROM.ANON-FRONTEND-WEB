@@ -4,12 +4,23 @@ import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
 import chain from "assets/icons/chain.svg";
+import { useEffect, useState } from "react";
+import { getUserApi, getUserByTokenApi } from "network/apis/userApis";
+import { userType } from "types";
 
 export const Link = () => {
+    const [user, setUser] = useState<userType>();
+    useEffect(() => {
+        const getUser = async () => {
+            let res = await getUserByTokenApi();
+            setUser(res?.data);
+        };
+        getUser();
+    }, []);
     const handleClickButton = () => {
         try {
             const textArea = document.createElement("textarea");
-            textArea.value = "https://from.anon/instaId";
+            textArea.value = `https://from.anon/${user?.instaId}`;
 
             document.body.appendChild(textArea);
 
@@ -27,7 +38,7 @@ export const Link = () => {
             <LinkAddress>
                 <Img src={chain} width={20} height={20} alt="chain img"></Img>
                 <Typo.s4 color={Palette.Gray60}>
-                    https://from-anon.vercel.app/instaId
+                    https://from-anon.vercel.app/{user?.instaId}
                 </Typo.s4>
             </LinkAddress>
             <Button onClick={handleClickButton}>
@@ -39,11 +50,11 @@ export const Link = () => {
 
 const LinkAddress = styled(Row)`
     width: 225px;
-    height: 29px;
+    height: 32px;
     align-items: center;
     justify-content: flex-start;
 
-    padding: 0 5px;
+    padding: 5px;
     gap: 5px;
 
     border-radius: 12px;
@@ -51,7 +62,7 @@ const LinkAddress = styled(Row)`
 `;
 const Button = styled(Row)`
     width: 41px;
-    height: 29px;
+    height: 32px;
     align-items: center;
     justify-content: center;
 
