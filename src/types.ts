@@ -12,3 +12,13 @@ export interface userType {
     instaId: string;
     pro?: boolean;
 }
+export interface mailpaperType {
+    id: number;
+    pro: boolean;
+    isFavorite?: boolean;
+}
+export interface favoriteMPType {
+    id: number;
+    userId: number;
+    mailPaperId: number;
+}
