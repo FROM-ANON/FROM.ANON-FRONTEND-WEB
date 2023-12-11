@@ -21,10 +21,6 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
     const [toggledMPList, setToggledMPList] = useState<Array<mailpaperType>>(
         []
     );
-    const fetchAllMailPapers = async () => {
-        let res = await getAllMailPapersApi();
-        setMailPaper({ ...mailPaper, mailPaperList: res?.data });
-    };
     const fetchAllFavoriteMailPapers = async () => {
         let res = await getAllFavoriteMailPapersApi();
         setMailPaper({ ...mailPaper, favoriteMailPaperList: res?.data });
@@ -41,8 +37,6 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
             (fmp) => fmp.mailPaperId === mailPaperId
         )?.id;
 
-        console.log(mailPaperId);
-        console.log(favoriteMailPaperId);
         if (favoriteMailPaperId) {
             await delFavoriteMailPaperApi(favoriteMailPaperId);
         } else {
@@ -56,10 +50,6 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
         );
     };
 
-    useEffect(() => {
-        fetchAllMailPapers();
-        fetchAllFavoriteMailPapers();
-    }, []);
     useEffect(() => {
         if (toggleMenu === 0) {
             setToggledMPList(mailPaper.mailPaperList);
