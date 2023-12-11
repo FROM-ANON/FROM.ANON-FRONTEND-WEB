@@ -37,3 +37,10 @@ export const mailPaperState = atom<mailPaperStateType>({
         favoriteMailPaperList: [],
     },
 });
+
+export const selectedMailPaperState = atom({
+    key: "selectedMailPaperState",
+    default: {
+        selectedMailPaperId: 1,
+    },
+});

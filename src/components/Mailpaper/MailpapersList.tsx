@@ -13,8 +13,9 @@ import {
     postFavoriteMailPaperApi,
 } from "network/apis/mailPaperApis";
 import { useRecoilState } from "recoil";
-import { mailPaperState } from "recoil/atom";
+import { mailPaperState, selectedMailPaperState } from "recoil/atom";
 import { mailpaperType } from "types";
+import { useNavigate } from "react-router-dom";
 
 export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
     const [mailPaper, setMailPaper] = useRecoilState(mailPaperState);
@@ -60,12 +61,25 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
         }
     }, [toggleMenu]);
 
+    const [selectedMailPaper, setSelectedMailPaper] = useRecoilState(
+        selectedMailPaperState
+    );
+    const navigate = useNavigate();
+    const setItSelectedMailPaper = (mailPaperId: number) => {
+        setSelectedMailPaper({ selectedMailPaperId: mailPaperId });
+        navigate(-1);
+    };
+
     return (
         <Container>
             {mailpaperSet.map((set, setIdx) => (
                 <RowContainer key={setIdx}>
                     {set.map((item, index) => (
-                        <Mailpaper key={index} mailPaperId={item.id}>
+                        <Mailpaper
+                            key={index}
+                            mailPaperId={item.id}
+                            onClick={() => setItSelectedMailPaper(item.id)}
+                        >
                             {item.pro ? (
                                 <Img
                                     src={crown}
@@ -85,7 +99,10 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
                                 width={13}
                                 height={22}
                                 alt="favorite icon"
-                                onClick={() => handleClickFavorite(item.id)}
+                                onClick={(e) => {
+                                    e.stopPropagation(); // 이벤트 전파 중단
+                                    handleClickFavorite(item.id);
+                                }}
                             />
                         </Mailpaper>
                     ))}
