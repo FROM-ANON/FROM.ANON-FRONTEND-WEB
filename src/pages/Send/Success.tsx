@@ -8,37 +8,42 @@ import styled from "styled-components";
 
 export const Success = () => {
     return (
-        <Column justifyContent="center">
-            <Wrapper>
-                <Img src="/logo.svg" width={88.1} height={97.5} alt="Logo" />
+        <Wrapper justifyContent="center" gap={131.32}>
+            <Column gap={50} alignItems="center">
+                <Column gap={7} alignItems="center">
+                    <Img
+                        src="/logo.svg"
+                        width={132.59}
+                        height={146.86}
+                        alt="logo"
+                    />
+                    <Img
+                        src="/logotext.svg"
+                        width={169}
+                        height={38}
+                        alt="logo text"
+                    />
+                </Column>
                 <Typo.h3>편지가 전송되었습니다.</Typo.h3>
-            </Wrapper>
-            <Buttons alignItems="center">
+            </Column>
+            <Column alignItems="center" gap={17}>
                 <StyledLink to="/send">
-                    <StyledButton color={Palette.Mandarin20}>
-                        <Typo.b3>다른 편지 보내기</Typo.b3>
+                    <StyledButton color={Palette.Mandarin}>
+                        <Typo.b3 color={Palette.White}>
+                            다른 편지 보내기
+                        </Typo.b3>
                     </StyledButton>
                 </StyledLink>
                 <StyledLink to="/main">
-                    <StyledButton color={Palette.Mandarin20}>
-                        <Typo.b3>홈으로 가기</Typo.b3>
+                    <StyledButton color={Palette.Gray05}>
+                        <Typo.b3 color={Palette.Gray50}>홈으로 가기</Typo.b3>
                     </StyledButton>
                 </StyledLink>
-            </Buttons>
-        </Column>
+            </Column>
+        </Wrapper>
     );
 };
 
 const Wrapper = styled(Column)`
-    gap: 21px;
-    align-items: center;
-
-    position: fixed;
-    top: 200px;
-`;
-const Buttons = styled(Column)`
-    gap: 21px;
-
-    position: fixed;
-    bottom: 155px;
+    padding-top: 116px;
 `;

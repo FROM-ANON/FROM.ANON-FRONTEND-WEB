@@ -32,9 +32,9 @@ export const InboxMail = () => {
     return (
         <>
             {mail && (
-                <Container mailPaperId={mail.mailPaperId}>
+                <Container mailPaperId={mail.mailPaperId} gap={46}>
                     <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
-                    <Column alignItems="center">
+                    <Column alignItems="center" gap={105}>
                         <Mail mail={mail} />
                         <Buttons mail={mail} />
                     </Column>

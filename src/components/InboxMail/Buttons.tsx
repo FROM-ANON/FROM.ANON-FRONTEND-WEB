@@ -37,7 +37,7 @@ export const Buttons = ({ mail }: { mail: mailType | undefined }) => {
     }, [isConfirmedToReport]);
 
     return (
-        <Container gap={12} alignItems="center">
+        <Column gap={17} alignItems="center">
             <StyledButton
                 onClick={handleStoryAnswerBtnClick}
                 color="var(--linear_gradient, linear-gradient(90deg, rgba(255, 214, 0, 0.90) 0%, rgba(255, 122, 0, 0.90) 24.48%, rgba(255, 0, 105, 0.90) 39.58%, rgba(211, 0, 197, 0.90) 60.42%, rgba(118, 56, 250, 0.90) 79.69%))"
@@ -62,11 +62,6 @@ export const Buttons = ({ mail }: { mail: mailType | undefined }) => {
                 ></Confirm>
             )}
             <Toast show={toast} text="신고되었습니다." />
-        </Container>
+        </Column>
     );
 };
-
-const Container = styled(Column)`
-    position: absolute;
-    bottom: 50px;
-`;

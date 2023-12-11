@@ -39,14 +39,12 @@ export const Footer = () => {
 };
 
 const Container = styled(Column)`
-    height: 101px;
+    height: 94px;
     justify-content: center;
 
-    padding: 0 26px;
+    padding-left: 21px;
 
-    backgroud: transparent;
-    position: fixed;
-    bottom: 0;
+    background: ${Palette.White};
 `;
 const Bar = styled.div`
     width: 1px;

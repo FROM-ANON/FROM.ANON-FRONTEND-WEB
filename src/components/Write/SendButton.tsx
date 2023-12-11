@@ -23,7 +23,7 @@ export const SendButton = () => {
         if (response?.status === 200) {
             let res = await postMailApi({
                 //메일 전송
-                userId: writeState.userId,
+                instaId: writeState.instaId,
                 mailPaperId: writeState.mailPaperId,
                 text: writeState.text,
             });
@@ -32,7 +32,7 @@ export const SendButton = () => {
                 console.log(res);
                 //WriteMailState 초기화
                 setWriteState({
-                    userId: 1,
+                    instaId: "",
                     mailPaperId: 1,
                     text: "",
                 });
@@ -60,7 +60,7 @@ export const SendButton = () => {
 
 const Container = styled(Row)`
     width: 100vw;
-    height: 109px;
+    padding: 37px 0;
 
     align-items: center;
     justify-content: center;

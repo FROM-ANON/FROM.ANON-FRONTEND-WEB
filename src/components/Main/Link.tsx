@@ -27,7 +27,7 @@ export const Link = () => {
             <LinkAddress>
                 <Img src={chain} width={20} height={20} alt="chain img"></Img>
                 <Typo.s4 color={Palette.Gray60}>
-                    https://from.anon/instaId
+                    https://from-anon.vercel.app/instaId
                 </Typo.s4>
             </LinkAddress>
             <Button onClick={handleClickButton}>

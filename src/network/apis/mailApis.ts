@@ -1,17 +1,17 @@
 import { axiosInstance } from "../config";
 
 export const postMailApi = async ({
-    userId,
+    instaId,
     mailPaperId,
     text,
 }: {
-    userId: number;
+    instaId: string;
     mailPaperId: number;
     text: string;
 }) => {
     try {
         const body = {
-            userId: userId,
+            instaId: instaId,
             mailPaperId: mailPaperId,
             text: text,
         };

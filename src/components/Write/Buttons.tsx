@@ -27,7 +27,7 @@ export const Buttons = () => {
             </Button>
             {isModalOpen && (
                 <Confirm
-                    text="해당 기능은 프로버전에서만 제공됩니다.
+                    text="해당 기능은 프로버전에서만 제공됩니다.   
                     지금 업그레이드 하시겠습니까?"
                     type="proUpgrade"
                     setIsModalOpenState={setIsModalOpen}

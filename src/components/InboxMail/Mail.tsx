@@ -61,11 +61,11 @@ const Container = styled(Column)`
     width: 300px;
     min-height: 300px;
 
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
     margin: 5px auto;
-    padding: 24px;
+    padding: 25px;
     gap: 30px;
 
     border-radius: 25px;

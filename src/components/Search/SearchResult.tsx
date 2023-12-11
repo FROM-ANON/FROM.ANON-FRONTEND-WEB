@@ -43,7 +43,7 @@ export const SearchResult = ({ searchText }: { searchText: string }) => {
     const handleSendBtn = () => {
         const clickedUser = userList.find((user) => user.isClicked === true);
         if (clickedUser) {
-            navigate(`/send/write/${clickedUser.user.userId}`);
+            navigate(`/send/write/${clickedUser.user.instaId}`);
         }
     };
 
@@ -83,7 +83,7 @@ export const SearchResult = ({ searchText }: { searchText: string }) => {
 };
 
 const SendBtn = styled(StyledButton)<{ isClicked: boolean }>`
-    position: absolute;
-    bottom: 50px;
+    position: fixed;
+    bottom: 37px;
     cursor: ${(props) => !props.isClicked && `default`};
 `;
