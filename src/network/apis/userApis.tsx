@@ -28,3 +28,11 @@ export const delUserApi = async () => {
         console.log(err);
     }
 };
+export const getUserByTokenApi = async () => {
+    try {
+        let res = await axiosInstance.get(`/user`);
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
+};
