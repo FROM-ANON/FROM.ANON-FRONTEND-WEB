@@ -6,9 +6,7 @@ import { getMailApi } from "network/apis/mailApis";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Palette } from "styles/Palette";
 import { mailType } from "types";
-import testImg from "assets/icons/testImg.svg";
 
 export const InboxMail = () => {
     const { id } = useParams();

@@ -13,7 +13,7 @@ import {
     postFavoriteMailPaperApi,
 } from "network/apis/mailPaperApis";
 import { useRecoilState } from "recoil";
-import { mailPaperState, selectedMailPaperState } from "recoil/atom";
+import { WriteMailState, mailPaperState } from "recoil/atom";
 import { mailpaperType } from "types";
 import { useNavigate } from "react-router-dom";
 
@@ -61,12 +61,10 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
         }
     }, [toggleMenu]);
 
-    const [selectedMailPaper, setSelectedMailPaper] = useRecoilState(
-        selectedMailPaperState
-    );
     const navigate = useNavigate();
+    const [writeState, setWriteState] = useRecoilState(WriteMailState);
     const setItSelectedMailPaper = (mailPaperId: number) => {
-        setSelectedMailPaper({ selectedMailPaperId: mailPaperId });
+        setWriteState({ ...writeState, mailPaperId: mailPaperId });
         navigate(-1);
     };
 

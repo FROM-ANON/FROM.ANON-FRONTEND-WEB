@@ -5,13 +5,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Palette } from "styles/Palette";
 import Typo from "styles/Typo";
-import { useRecoilState } from "recoil";
-import { selectedMailPaperState } from "recoil/atom";
 
 export const Buttons = () => {
-    const [selectedMailPaper, setSelectedMailPaper] = useRecoilState(
-        selectedMailPaperState
-    );
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const navigate = useNavigate();
 
