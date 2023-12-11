@@ -1,4 +1,5 @@
-import { atom } from "recoil";
+import { RecoilState, atom } from "recoil";
+import { favoriteMPType, mailpaperType } from "types";
 
 export const alertOpenState = atom({
     key: "alertOpenState",
@@ -21,5 +22,18 @@ export const deleteMailState = atom({
     default: {
         mailId: 0,
         isConfirmedToDelete: false,
+    },
+});
+
+type mailPaperStateType = {
+    mailPaperList: mailpaperType[];
+    favoriteMailPaperList: favoriteMPType[];
+};
+
+export const mailPaperState = atom<mailPaperStateType>({
+    key: "mailPaperState",
+    default: {
+        mailPaperList: [],
+        favoriteMailPaperList: [],
     },
 });
