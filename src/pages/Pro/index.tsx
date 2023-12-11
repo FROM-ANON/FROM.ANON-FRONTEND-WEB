@@ -20,7 +20,7 @@ export const Pro = () => {
     return (
         <Column>
             <Header type="sub" />
-            <Column gap={31} alignItems="center">
+            <Column gap={30} alignItems="center">
                 <Graybar>
                     <Img
                         src={crown}
@@ -30,60 +30,66 @@ export const Pro = () => {
                     />
                     <Typo.b1>Pro</Typo.b1>
                 </Graybar>
-                <Container gap={23}>
-                    <Column gap={7} alignItems="center">
-                        <Img
-                            src="/logo.svg"
-                            width={88.3}
-                            height={97.8}
-                            alt="logo"
-                        />
-                        <Img
-                            src="/logotext.svg"
-                            width={86}
-                            height={20}
-                            alt="logo text"
-                        />
-                    </Column>
-                    <Column gap={15}>
-                        <Typo.s2 color="#FF4040">출시 기념 프로모션</Typo.s2>
-                        <Row gap={14} alignItems="center">
-                            <Typo.big>월 $1</Typo.big>
-                            <Typo.h3 color={Palette.Gray40}>
-                                <s>$5</s>
-                            </Typo.h3>
-                        </Row>
-                        <ExplainBenefit>
-                            <Row gap={12}>
-                                <Img
-                                    src={grayCheck}
-                                    width={24}
-                                    height={24}
-                                    alt="gray check icon"
-                                />
-                                <Typo.b4 color={Palette.Gray70}>
-                                    모든 편지지 제한 없이 사용
-                                </Typo.b4>
-                            </Row>
-                            <Row gap={12}>
-                                <Img
-                                    src={grayCheck}
-                                    width={24}
-                                    height={24}
-                                    alt="gray check icon"
-                                />
-                                <Typo.b4 color={Palette.Gray70}>
-                                    편지 내 사진 첨부 기능
-                                </Typo.b4>
-                            </Row>
-                        </ExplainBenefit>
-                    </Column>
-                </Container>
-                <Button color={Palette.Mandarin} onClick={handleClick}>
-                    <Typo.b3 color={Palette.White}>
-                        프로 버전으로 업그레이드 하기
-                    </Typo.b3>
-                </Button>
+                <Column gap={87.14} alignItems="center">
+                    <Container gap={30}>
+                        <Column gap={7} alignItems="center">
+                            <Img
+                                src="/logo.svg"
+                                width={88.3}
+                                height={97.8}
+                                alt="logo"
+                            />
+                            <Img
+                                src="/logotext.svg"
+                                width={86}
+                                height={20}
+                                alt="logo text"
+                            />
+                        </Column>
+                        <Column gap={15}>
+                            <Column gap={5}>
+                                <Typo.s2 color="#FF4040">
+                                    출시 기념 프로모션
+                                </Typo.s2>
+                                <Row gap={14} alignItems="center">
+                                    <Typo.big>월 $1</Typo.big>
+                                    <Typo.h3 color={Palette.Gray40}>
+                                        <s>$5</s>
+                                    </Typo.h3>
+                                </Row>
+                            </Column>
+                            <ExplainBenefit>
+                                <Row gap={12}>
+                                    <Img
+                                        src={grayCheck}
+                                        width={24}
+                                        height={24}
+                                        alt="gray check icon"
+                                    />
+                                    <Typo.b4 color={Palette.Gray70}>
+                                        모든 편지지 제한 없이 사용
+                                    </Typo.b4>
+                                </Row>
+                                <Row gap={12}>
+                                    <Img
+                                        src={grayCheck}
+                                        width={24}
+                                        height={24}
+                                        alt="gray check icon"
+                                    />
+                                    <Typo.b4 color={Palette.Gray70}>
+                                        편지 내 사진 첨부 기능
+                                    </Typo.b4>
+                                </Row>
+                            </ExplainBenefit>
+                        </Column>
+                    </Container>
+                    <Button color={Palette.Mandarin} onClick={handleClick}>
+                        <Typo.b3 color={Palette.White}>
+                            프로 버전으로 업그레이드 하기
+                        </Typo.b3>
+                    </Button>
+                </Column>
             </Column>
             {alertState.isOpen && (
                 <Alert text="해당 기능은 앱에서만 제공됩니다."></Alert>
@@ -105,15 +111,12 @@ const Container = styled(Column)`
     width: 300px;
 `;
 const ExplainBenefit = styled(Column)`
-    height: 120px;
-
-    padding: 30px;
-    gap: 12px;
+    padding: 27px 31px;
+    gap: 17px;
 
     border-radius: 25px;
     background: ${Palette.Gray05};
 `;
 const Button = styled(StyledButton)`
-    position: fixed;
-    bottom: 50px;
+    box-shadow: 1px 1px 10px 0px rgba(255, 165, 0, 0.7);
 `;

@@ -98,80 +98,94 @@ export const Terms = () => {
     };
 
     return (
-        <Container>
-            <Column>
-                <Typo.h3>
-                    약관에 동의하면 <br /> 회원가입이 완료됩니다.
-                </Typo.h3>
-            </Column>
-            <TermContainer>
-                <Row alignItems="center" gap={8}>
-                    <Img
-                        src={allChecked ? termsAllCheckYes : termsAllCheckNo}
-                        width={24.14}
-                        height={24.14}
-                        onClick={toggleCheck}
-                        alt="all agree button"
-                    />
-                    <Typo.b4 color={Palette.Gray60}>
-                        [필수] FROM.ANON 약관 전체 동의
-                    </Typo.b4>
-                </Row>
-                <Line />
-                <Row alignItems="center" justifyContent="space-between">
-                    <Row alignItems="center" gap={8}>
-                        <Img
-                            src={
-                                checkboxStates[0].state
-                                    ? termCheckYes
-                                    : termCheckNo
-                            }
-                            width={10.83}
-                            height={7.35}
-                            onClick={() => handleCheckboxChange(0)}
-                            alt="agree use terms button"
-                        />
-                        <Typo.b4 color={Palette.Gray60}>
-                            {checkboxStates[0].termTitle}
-                        </Typo.b4>
-                    </Row>
-                    <StyledLink to={checkboxStates[0].to}>
-                        <Img
-                            src={termMore}
-                            width={5.92}
-                            height={11.37}
-                            alt="more button"
-                        />
-                    </StyledLink>
-                </Row>
-                <Row alignItems="center" justifyContent="space-between">
-                    <Row alignItems="center" gap={8}>
-                        <Img
-                            src={
-                                checkboxStates[1].state
-                                    ? termCheckYes
-                                    : termCheckNo
-                            }
-                            width={10.83}
-                            height={7.35}
-                            onClick={() => handleCheckboxChange(1)}
-                            alt="agree privacy terms button"
-                        />
-                        <Typo.b4 color={Palette.Gray60}>
-                            {checkboxStates[1].termTitle}
-                        </Typo.b4>
-                    </Row>
-                    <StyledLink to={checkboxStates[1].to}>
-                        <Img
-                            src={termMore}
-                            width={5.92}
-                            height={11.37}
-                            alt="more button"
-                        />
-                    </StyledLink>
-                </Row>
-            </TermContainer>
-            <BtnContainer>
+        <Wrapper>
+            <Container gap={106}>
+                <Column gap={46}>
+                    <Column>
+                        <Typo.h3>
+                            약관에 동의하면 <br /> 회원가입이 완료됩니다.
+                        </Typo.h3>
+                    </Column>
+                    <TermContainer>
+                        <Row alignItems="center" gap={8}>
+                            <Img
+                                src={
+                                    allChecked
+                                        ? termsAllCheckYes
+                                        : termsAllCheckNo
+                                }
+                                width={24.14}
+                                height={24.14}
+                                onClick={toggleCheck}
+                                alt="all agree button"
+                            />
+                            <Typo.b4 color={Palette.Gray60}>
+                                [필수] FROM.ANON 약관 전체 동의
+                            </Typo.b4>
+                        </Row>
+                        <Line />
+                        <Column gap={15}>
+                            <Row
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Row alignItems="center" gap={8}>
+                                    <Img
+                                        src={
+                                            checkboxStates[0].state
+                                                ? termCheckYes
+                                                : termCheckNo
+                                        }
+                                        width={10.83}
+                                        height={7.35}
+                                        onClick={() => handleCheckboxChange(0)}
+                                        alt="agree use terms button"
+                                    />
+                                    <Typo.b4 color={Palette.Gray60}>
+                                        {checkboxStates[0].termTitle}
+                                    </Typo.b4>
+                                </Row>
+                                <StyledLink to={checkboxStates[0].to}>
+                                    <Img
+                                        src={termMore}
+                                        width={5.92}
+                                        height={11.37}
+                                        alt="more button"
+                                    />
+                                </StyledLink>
+                            </Row>
+                            <Row
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Row alignItems="center" gap={8}>
+                                    <Img
+                                        src={
+                                            checkboxStates[1].state
+                                                ? termCheckYes
+                                                : termCheckNo
+                                        }
+                                        width={10.83}
+                                        height={7.35}
+                                        onClick={() => handleCheckboxChange(1)}
+                                        alt="agree privacy terms button"
+                                    />
+                                    <Typo.b4 color={Palette.Gray60}>
+                                        {checkboxStates[1].termTitle}
+                                    </Typo.b4>
+                                </Row>
+                                <StyledLink to={checkboxStates[1].to}>
+                                    <Img
+                                        src={termMore}
+                                        width={5.92}
+                                        height={11.37}
+                                        alt="more button"
+                                    />
+                                </StyledLink>
+                            </Row>
+                        </Column>
+                    </TermContainer>
+                </Column>
                 <StyledButton
                     color={allChecked ? Palette.Mandarin : Palette.Gray05}
                     onClick={handleClickBtn}
@@ -182,24 +196,24 @@ export const Terms = () => {
                         확인
                     </Typo.b3>
                 </StyledButton>
-            </BtnContainer>
-        </Container>
+            </Container>
+        </Wrapper>
     );
 };
 
-const Container = styled(Column)`
-    max-width: 406px;
+const Wrapper = styled(Column)`
     align-items: center;
     justify-content: center;
-
-    gap: 40px;
-    padding: 53px;
-    padding-top: 170px;
+    padding-top: 116px;
+`;
+const Container = styled(Column)`
+    max-width: 300px;
+    align-items: center;
+    justify-content: flex-start;
 `;
 const TermContainer = styled(Column)`
     width: 300px;
-    padding: 20px;
-    gap: 15px;
+    padding: 31px 20px;
 
     border-radius: 25px;
     border: 1px solid ${Palette.Mandarin};
@@ -207,11 +221,6 @@ const TermContainer = styled(Column)`
 const Line = styled.div`
     width: 100%;
     height: 1px;
+    margin: 26px 0;
     background: ${Palette.Mandarin};
-`;
-const BtnContainer = styled(Column)`
-    align-items: center;
-
-    position: fixed;
-    bottom: 162px;
 `;

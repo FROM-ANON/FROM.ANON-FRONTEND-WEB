@@ -83,7 +83,7 @@ export const SearchResult = ({ searchText }: { searchText: string }) => {
 };
 
 const SendBtn = styled(StyledButton)<{ isClicked: boolean }>`
-    position: absolute;
-    bottom: 50px;
+    position: fixed;
+    bottom: 37px;
     cursor: ${(props) => !props.isClicked && `default`};
 `;

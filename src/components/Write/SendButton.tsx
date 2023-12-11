@@ -60,7 +60,7 @@ export const SendButton = () => {
 
 const Container = styled(Row)`
     width: 100vw;
-    height: 109px;
+    padding: 37px 0;
 
     align-items: center;
     justify-content: center;

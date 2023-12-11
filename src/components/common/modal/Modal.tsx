@@ -9,7 +9,9 @@ const Modal = () => {
 const Message = ({ text }: { text: string }) => {
     return (
         <MessageContainer>
-            <Typo.b4 color={Palette.Gray80}>{text}</Typo.b4>
+            <Typo.b4 style={{ textAlign: "center" }} color={Palette.Gray80}>
+                {text}
+            </Typo.b4>
         </MessageContainer>
     );
 };
@@ -23,10 +25,10 @@ const ConfirmButton = ({
     return (
         <Buttons type="confirm">
             <LeftBtn onClick={onLeftClick}>
-                <Typo.s2 color={Palette.Gray60}>취소</Typo.s2>
+                <Typo.b4 color={Palette.Gray60}>취소</Typo.b4>
             </LeftBtn>
             <RightBtn onClick={onRightClick}>
-                <Typo.s2 color={Palette.White}>확인</Typo.s2>
+                <Typo.b4 color={Palette.White}>확인</Typo.b4>
             </RightBtn>
         </Buttons>
     );
@@ -35,7 +37,7 @@ const ConfirmButton = ({
 const AlertButton = ({ onClick }: { onClick: () => void }) => {
     return (
         <Buttons onClick={onClick} type="alert">
-            <Typo.s2 color={Palette.White}>확인</Typo.s2>
+            <Typo.b4 color={Palette.White}>확인</Typo.b4>
         </Buttons>
     );
 };

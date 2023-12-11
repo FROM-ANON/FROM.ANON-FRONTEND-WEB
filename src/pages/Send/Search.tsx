@@ -12,7 +12,7 @@ export const Search = () => {
     return (
         <Column alignItems="center">
             <Header type="sub" text="편지 보내기" />
-            <Column gap={29} alignItems="center" justifyContent="flex-start">
+            <Column gap={40} alignItems="center" justifyContent="flex-start">
                 <SearchBar
                     text={text}
                     setText={setText}

@@ -16,8 +16,8 @@ export const OnBoarding = () => {
             content: (
                 <>
                     <Typo.h2>익명으로</Typo.h2>
-                    <Typo.h2 color={Palette.Mandarin}>마음을 전달하는</Typo.h2>
-                    <Typo.h2>메세지</Typo.h2>
+                    <Typo.h1 color={Palette.Mandarin}>마음을 전달하는</Typo.h1>
+                    <Typo.h2>편지</Typo.h2>
                 </>
             ),
         },
@@ -25,11 +25,11 @@ export const OnBoarding = () => {
             isFocused: false,
             content: (
                 <>
-                    <Typo.h2 color={Palette.Mandarin}>
-                        나만의 SNS 링크를
-                    </Typo.h2>
-                    <Typo.h2 color={Palette.Mandarin}>공유하고</Typo.h2>
-                    <Typo.h2>메세지를 받아보세요</Typo.h2>
+                    <Typo.h1 color={Palette.Mandarin}>
+                        나만의 편지함 링크를
+                    </Typo.h1>
+                    <Typo.h1 color={Palette.Mandarin}>공유하고</Typo.h1>
+                    <Typo.h2>편지를 받아보세요</Typo.h2>
                 </>
             ),
         },
@@ -37,18 +37,26 @@ export const OnBoarding = () => {
             isFocused: false,
             content: (
                 <>
+                    <Typo.h2>나쁜 편지는</Typo.h2>
+                    <Typo.h1 color={Palette.Mandarin}>ChatGPT를 통해</Typo.h1>
+                    <Typo.h2>필터링됩니다</Typo.h2>
+                </>
+            ),
+        },
+        {
+            isFocused: false,
+            content: (
+                <>
+                    <Typo.h1 color={Palette.Mandarin}>나의 스토리에</Typo.h1>
                     <Typo.h2>전달받은 마음을</Typo.h2>
-                    <Typo.h2 color={Palette.Mandarin}>
-                        나의 스토리를 통해
-                    </Typo.h2>
-                    <Typo.h2 color={Palette.Mandarin}>표현해보세요</Typo.h2>
+                    <Typo.h1 color={Palette.Mandarin}>답해보세요</Typo.h1>
                 </>
             ),
         },
     ]);
     const navigate = useNavigate();
     const handleClickBtn = () => {
-        if (idx <= 1) {
+        if (idx <= 2) {
             setIdx(idx + 1);
         } else {
             navigate("/login");
@@ -65,31 +73,38 @@ export const OnBoarding = () => {
     }, [idx]);
 
     return (
-        <Container gap={65}>
-            <Column gap={12} alignItems="center">
-                <Img
-                    src="/logo.svg"
-                    width={104.2}
-                    height={115.42}
-                    alt="logo img"
-                />
-                <Img
-                    src="/logotext.svg"
-                    width={102}
-                    height={23}
-                    alt="logo text"
-                />
+        <Container gap={64}>
+            <Column gap={41}>
+                <Column gap={12} alignItems="center">
+                    <Img
+                        src="/logo.svg"
+                        width={104.2}
+                        height={115.42}
+                        alt="logo img"
+                    />
+                    <Img
+                        src="/logotext.svg"
+                        width={102}
+                        height={23}
+                        alt="logo text"
+                    />
+                </Column>
+                <Column gap={30}>
+                    <Column alignItems="center">
+                        {indicatorState[idx].content}
+                    </Column>
+                    <Row gap={11} justifyContent="center">
+                        <Circle isFocused={indicatorState[0].isFocused} />
+                        <Circle isFocused={indicatorState[1].isFocused} />
+                        <Circle isFocused={indicatorState[2].isFocused} />
+                        <Circle isFocused={indicatorState[3].isFocused} />
+                    </Row>
+                </Column>
             </Column>
-            <Column alignItems="center">{indicatorState[idx].content}</Column>
-            <Row gap={11} justifyContent="center">
-                <Circle isFocused={indicatorState[0].isFocused} />
-                <Circle isFocused={indicatorState[1].isFocused} />
-                <Circle isFocused={indicatorState[2].isFocused} />
-            </Row>
             <Column gap={17} alignItems="center">
                 <StyledButton color={Palette.Mandarin} onClick={handleClickBtn}>
                     <Typo.b3 color={Palette.White}>
-                        {idx === 2 ? "시작하기" : "다음"}
+                        {idx === 3 ? "시작하기" : "다음"}
                     </Typo.b3>
                 </StyledButton>
                 <StyledLink to="/login">
@@ -108,7 +123,7 @@ export const OnBoarding = () => {
 const Container = styled(Column)`
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 116px;
 `;
 const Circle = styled.div<{ isFocused: boolean }>`
     width: 8px;

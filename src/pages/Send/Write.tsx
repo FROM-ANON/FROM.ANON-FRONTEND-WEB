@@ -37,7 +37,8 @@ export const Write = () => {
     return (
         <Wrapper alignItems="center" mailPaperId={writeState.mailPaperId}>
             <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
-            <Container gap={20}>
+
+            <Container gap={17}>
                 <Typo.h3>@{userSendTo?.instaId}에게</Typo.h3>
                 <Buttons></Buttons>
                 <Column gap={20}>

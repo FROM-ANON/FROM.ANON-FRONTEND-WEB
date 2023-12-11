@@ -55,5 +55,5 @@ export const LogoutOrDelUser = ({ type }: { type: string }) => {
 };
 
 const Container = styled(Row)`
-    padding: 5px 35px;
+    padding: 5px 31px;
 `;
