@@ -11,7 +11,7 @@ export const alertOpenState = atom({
 export const WriteMailState = atom({
     key: "writeMailState",
     default: {
-        userId: 1,
+        instaId: "",
         mailPaperId: 1,
         text: "",
     },
