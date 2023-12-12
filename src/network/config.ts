@@ -73,7 +73,7 @@ axiosInstance.interceptors.response.use(
             } else {
                 //access token, refresh token이 없는 경우 (로그인되지 않은 상태에서의 접근)
                 // 로그아웃
-                alert("로그인이 필요한 페이지입니다.");
+                alert("로그인 후 다시 시도해 주세요.");
                 localStorage.clear();
                 window.location.href = "/login";
             }
