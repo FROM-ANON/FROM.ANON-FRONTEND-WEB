@@ -119,7 +119,7 @@ const Container = styled(Row)`
 `;
 const Mailpaper = styled(Row)<{ mailPaperId: number }>`
     width: 145px;
-    height: 145px;
+    height: 300px;
     justify-content: space-between;
 
     padding: 16px;
