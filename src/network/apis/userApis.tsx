@@ -5,18 +5,18 @@ export const searchApi = async (searchWord: string) => {
         let res = await axiosInstance.get(
             `/user/search?searchWord=${searchWord}`
         );
-        return res.data;
+        return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
 export const getUserApi = async (userId: number) => {
     try {
         let res = await axiosInstance.get(`/user/${userId}`);
-        return res.data;
+        return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -25,7 +25,7 @@ export const delUserApi = async () => {
         let res = await axiosInstance.delete(`/user`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 export const getUserByTokenApi = async () => {
@@ -33,6 +33,6 @@ export const getUserByTokenApi = async () => {
         let res = await axiosInstance.get(`/user`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
