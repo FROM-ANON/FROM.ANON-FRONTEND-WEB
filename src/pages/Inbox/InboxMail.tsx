@@ -49,4 +49,5 @@ const Container = styled(PageContainer)<{ mailPaperId: number }>`
         `url("/mailPaper/${props.mailPaperId}.svg")`};
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 `;
