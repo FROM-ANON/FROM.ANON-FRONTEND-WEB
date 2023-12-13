@@ -56,7 +56,7 @@ export const Mailpaper = () => {
 
     return (
         <Column>
-            <Header type="sub" text="편지지" />
+            <Header type="sub-sub" text="편지지" />
             {isLogin && (
                 <ToggleMenu
                     menu1={"전체"}
