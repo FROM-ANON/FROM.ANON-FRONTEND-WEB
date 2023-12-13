@@ -69,7 +69,7 @@ const Container = styled(Column)`
     gap: 30px;
 
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.5);
 `;
 const ContentText = styled(Typo.b4)`
     line-height: 200%;

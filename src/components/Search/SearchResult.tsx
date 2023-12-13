@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchApi } from "network/apis/userApis";
 import { userType } from "types";
+import { AxiosResponse } from "axios";
+import { handleError } from "functions";
 export const SearchResult = ({ searchText }: { searchText: string }) => {
     const navigate = useNavigate();
     const [userList, setUserList] = useState<
@@ -17,15 +19,18 @@ export const SearchResult = ({ searchText }: { searchText: string }) => {
     useEffect(() => {
         const search = async () => {
             try {
-                let res = await searchApi(searchText);
-                setUserList(
-                    res.map((user: userType) => ({
-                        user: user,
-                        isClicked: false,
-                    }))
-                );
+                let res: AxiosResponse<userType[]> | undefined =
+                    await searchApi(searchText);
+                if (res !== undefined) {
+                    setUserList(
+                        res?.data.map((user: userType) => ({
+                            user: user,
+                            isClicked: false,
+                        }))
+                    );
+                }
             } catch (err) {
-                console.log(err);
+                handleError(err);
             }
         };
         search();

@@ -6,8 +6,13 @@ import { Toast } from "components/common/Toast";
 import { Confirm } from "components/common/modal/Confirm";
 import { useRecoilState } from "recoil";
 import { alertOpenState, deleteMailState } from "recoil/atom";
+import { checkIsLogin, handleUnauthorizedAccess } from "functions";
 
 export const Inbox = () => {
+    useEffect(() => {
+        checkIsLogin().then((res) => !res && handleUnauthorizedAccess());
+    }, []);
+
     const [deleteState, setDeleteState] = useRecoilState(deleteMailState);
     const [alertState, setAlertState] = useRecoilState(alertOpenState);
 

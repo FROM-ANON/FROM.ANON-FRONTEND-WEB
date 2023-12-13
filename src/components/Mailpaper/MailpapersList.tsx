@@ -9,15 +9,21 @@ import { useEffect, useState } from "react";
 import {
     delFavoriteMailPaperApi,
     getAllFavoriteMailPapersApi,
-    getAllMailPapersApi,
     postFavoriteMailPaperApi,
 } from "network/apis/mailPaperApis";
 import { useRecoilState } from "recoil";
 import { WriteMailState, mailPaperState } from "recoil/atom";
 import { mailpaperType } from "types";
 import { useNavigate } from "react-router-dom";
+import { checkIsLogin } from "functions";
 
 export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
+    const [isLogin, setIsLogin] = useState<boolean>();
+
+    useEffect(() => {
+        checkIsLogin().then((res) => setIsLogin(res));
+    }, []);
+
     const [mailPaper, setMailPaper] = useRecoilState(mailPaperState);
     const [toggledMPList, setToggledMPList] = useState<Array<mailpaperType>>(
         []
@@ -88,20 +94,22 @@ export const MailpapersList = ({ toggleMenu }: { toggleMenu: number }) => {
                             ) : (
                                 <div></div>
                             )}
-                            <Img
-                                src={
-                                    checkIsFavorite(item.id)
-                                        ? favoriteYes
-                                        : favoriteNo
-                                }
-                                width={13}
-                                height={22}
-                                alt="favorite icon"
-                                onClick={(e) => {
-                                    e.stopPropagation(); // 이벤트 전파 중단
-                                    handleClickFavorite(item.id);
-                                }}
-                            />
+                            {isLogin && (
+                                <Img
+                                    src={
+                                        checkIsFavorite(item.id)
+                                            ? favoriteYes
+                                            : favoriteNo
+                                    }
+                                    width={13}
+                                    height={22}
+                                    alt="favorite icon"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // 이벤트 전파 중단
+                                        handleClickFavorite(item.id);
+                                    }}
+                                />
+                            )}
                         </Mailpaper>
                     ))}
                 </RowContainer>
@@ -119,7 +127,7 @@ const Container = styled(Row)`
 `;
 const Mailpaper = styled(Row)<{ mailPaperId: number }>`
     width: 145px;
-    height: 145px;
+    height: 300px;
     justify-content: space-between;
 
     padding: 16px;

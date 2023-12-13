@@ -21,7 +21,7 @@ export const Write = () => {
 
     return (
         <Wrapper alignItems="center" mailPaperId={writeState.mailPaperId}>
-            <Header type="sub" bgcolor="rgba(255, 255, 255, 0.30)" />
+            <Header type="sub-sub" bgcolor="rgba(255, 255, 255, 0.30)" />
 
             <Container gap={17}>
                 <Typo.h3>@{id}에게</Typo.h3>
@@ -49,4 +49,5 @@ const Wrapper = styled(PageContainer)<{ mailPaperId: number }>`
 
 const Container = styled(Column)`
     width: 300px;
+    padding-borrom: 137px;
 `;

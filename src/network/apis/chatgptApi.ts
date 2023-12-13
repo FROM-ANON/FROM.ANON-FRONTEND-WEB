@@ -6,6 +6,6 @@ export const gptCheckContentApi = async ({ content }: { content: string }) => {
         let res = await axiosInstance.post(`/chatgpt`, body);
         return res;
     } catch (err) {
-        return err;
+        throw err;
     }
 };

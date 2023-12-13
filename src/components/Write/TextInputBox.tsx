@@ -45,7 +45,7 @@ const Container = styled(Column)`
 
     border-radius: 25px;
     border: 1px solid ${Palette.Gray10};
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.5);
     box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.25);
 
     &:focus-within {

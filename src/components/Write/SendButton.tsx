@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { postMailApi } from "network/apis/mailApis";
 import { gptCheckContentApi } from "network/apis/chatgptApi";
 import { Alert } from "components/common/modal/Alert";
+import { AxiosResponse } from "axios";
+import { handleError } from "functions";
 
 export const SendButton = () => {
     const navigate = useNavigate();
@@ -16,33 +18,33 @@ export const SendButton = () => {
     const [alertState, setAlertState] = useRecoilState(alertOpenState);
 
     const handleClick = async () => {
-        let response: any = await gptCheckContentApi({
-            content: writeState.text,
-        });
-        //비방성 또는 성희롱성 글이 아닌 경우
-        if (response?.status === 200) {
-            let res = await postMailApi({
-                //메일 전송
-                instaId: writeState.instaId,
-                mailPaperId: writeState.mailPaperId,
-                text: writeState.text,
-            });
-            if (res?.status === 201) {
+        try {
+            await gptCheckContentApi({ content: writeState.text });
+            //비방성 또는 성희롱성 글이 아닌 경우
+            try {
+                await postMailApi({
+                    //메일 전송
+                    instaId: writeState.instaId,
+                    mailPaperId: writeState.mailPaperId,
+                    text: writeState.text,
+                });
                 //메일 전송 성공
-                console.log(res);
                 //WriteMailState 초기화
                 setWriteState({
                     instaId: "",
                     mailPaperId: 1,
                     text: "",
                 });
-
                 navigate("/send/success");
+            } catch (err) {
+                handleError(err);
             }
-        }
-        //비방성 또는 성희롱성 글인 경우
-        else if (response?.response?.status === 406) {
-            setAlertState({ isOpen: true });
+        } catch (err) {
+            const status = handleError(err);
+            if (status === 406) {
+                //비방성 또는 성희롱성 글인 경우
+                setAlertState({ isOpen: true });
+            }
         }
     };
 
@@ -52,7 +54,7 @@ export const SendButton = () => {
                 <Typo.b3>전송하기</Typo.b3>
             </Button>
             {alertState.isOpen && (
-                <Alert text="ChatGPT가 상대를 비방하거나 성희롱하는 내용으로 판단하였습니다. 다시 작성해 주세요."></Alert>
+                <Alert text="ChatGPT가 부적절한 내용으로 판단하였습니다. 다시 작성해 주세요."></Alert>
             )}
         </Container>
     );
