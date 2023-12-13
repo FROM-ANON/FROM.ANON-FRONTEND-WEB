@@ -42,7 +42,7 @@ export const getAllNotReadMailsApi = async () => {
 export const getMailApi = async (mailId: number) => {
     try {
         let res = await axiosInstance.get(`/mail/${mailId}`);
-        return res.data;
+        return res;
     } catch (err) {
         throw err;
     }
