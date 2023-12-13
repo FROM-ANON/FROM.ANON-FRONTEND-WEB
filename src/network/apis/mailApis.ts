@@ -18,7 +18,7 @@ export const postMailApi = async ({
         let res = await axiosInstance.post(`/mail`, body);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -27,7 +27,7 @@ export const getAllMailsApi = async () => {
         let res = await axiosInstance.get("/mail");
         return res.data;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 export const getAllNotReadMailsApi = async () => {
@@ -35,7 +35,7 @@ export const getAllNotReadMailsApi = async () => {
         let res = await axiosInstance.get("/mail/notread");
         return res.data;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -44,7 +44,7 @@ export const getMailApi = async (mailId: number) => {
         let res = await axiosInstance.get(`/mail/${mailId}`);
         return res.data;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -52,7 +52,7 @@ export const deleteMailApi = async (mailId: number) => {
     try {
         let res = await axiosInstance.delete(`/mail/${mailId}`);
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -60,6 +60,6 @@ export const reportMailApi = async (mailId: number) => {
     try {
         await axiosInstance.post(`/mail/report/${mailId}`);
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
