@@ -7,13 +7,19 @@ import chain from "assets/icons/chain.svg";
 import { useEffect, useState } from "react";
 import { getUserApi, getUserByTokenApi } from "network/apis/userApis";
 import { userType } from "types";
+import { AxiosResponse } from "axios";
+import { handleError } from "functions";
 
 export const Link = () => {
     const [user, setUser] = useState<userType>();
     useEffect(() => {
         const getUser = async () => {
-            let res = await getUserByTokenApi();
-            setUser(res?.data);
+            try {
+                let res: AxiosResponse<any> = await getUserByTokenApi();
+                setUser(res?.data);
+            } catch (err) {
+                handleError(err);
+            }
         };
         getUser();
     }, []);
@@ -34,17 +40,26 @@ export const Link = () => {
     };
 
     return (
-        <Row gap={10}>
-            <LinkAddress>
-                <Img src={chain} width={20} height={20} alt="chain img"></Img>
-                <Typo.s4 color={Palette.Gray60}>
-                    https://from-anon.vercel.app/{user?.instaId}
-                </Typo.s4>
-            </LinkAddress>
-            <Button onClick={handleClickButton}>
-                <Typo.s4 color={Palette.Gray60}>복사</Typo.s4>
-            </Button>
-        </Row>
+        <>
+            {user !== undefined && (
+                <Row gap={10}>
+                    <LinkAddress>
+                        <Img
+                            src={chain}
+                            width={20}
+                            height={20}
+                            alt="chain img"
+                        ></Img>
+                        <Typo.s4 color={Palette.Gray60}>
+                            https://from-anon.vercel.app/{user?.instaId}
+                        </Typo.s4>
+                    </LinkAddress>
+                    <Button onClick={handleClickButton}>
+                        <Typo.s4 color={Palette.Gray60}>복사</Typo.s4>
+                    </Button>
+                </Row>
+            )}
+        </>
     );
 };
 
