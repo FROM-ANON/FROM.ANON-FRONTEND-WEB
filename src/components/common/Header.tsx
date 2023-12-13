@@ -17,7 +17,11 @@ export const Header = ({
     const navigate = useNavigate();
 
     const handleBack = () => {
-        navigate(-1);
+        if (type === "sub") {
+            navigate("/main");
+        } else {
+            navigate(-1);
+        }
     };
 
     return (
