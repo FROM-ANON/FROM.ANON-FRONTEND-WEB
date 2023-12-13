@@ -49,4 +49,5 @@ const Wrapper = styled(PageContainer)<{ mailPaperId: number }>`
 
 const Container = styled(Column)`
     width: 300px;
+    padding-borrom: 137px;
 `;
