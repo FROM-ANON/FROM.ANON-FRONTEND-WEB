@@ -5,7 +5,7 @@ export const getAllMailPapersApi = async () => {
         let res = await axiosInstance.get(`/mailpaper`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -14,7 +14,7 @@ export const getMailPaperApi = async (mailpaperId: number) => {
         let res = await axiosInstance.get(`/mailpaper/${mailpaperId}`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -23,7 +23,7 @@ export const getAllFavoriteMailPapersApi = async () => {
         let res = await axiosInstance.get(`/mailpaper/favorite`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -34,7 +34,7 @@ export const postFavoriteMailPaperApi = async (mailPaperId: number) => {
         );
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
 
@@ -43,6 +43,6 @@ export const delFavoriteMailPaperApi = async (fmpId: number) => {
         let res = await axiosInstance.delete(`/mailpaper/favorite/${fmpId}`);
         return res;
     } catch (err) {
-        console.log(err);
+        throw err;
     }
 };
