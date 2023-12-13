@@ -54,7 +54,7 @@ export const SendButton = () => {
                 <Typo.b3>전송하기</Typo.b3>
             </Button>
             {alertState.isOpen && (
-                <Alert text="ChatGPT가 상대를 비방하거나 성희롱하는 내용으로 판단하였습니다. 다시 작성해 주세요."></Alert>
+                <Alert text="ChatGPT가 부적절한 내용으로 판단하였습니다. 다시 작성해 주세요."></Alert>
             )}
         </Container>
     );
